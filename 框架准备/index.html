@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <ul>
+    <li><button>1</button></li>
+    <li><button>2</button></li>
+    <li><button>3</button></li>
+    <li><button>4</button></li>
+    <li><button>5</button></li>
+  </ul>
+  <div>
+    年龄：
+  </div>
+  <div>
+    姓名：
+  </div>
+  <script>
+    // let allLi = document.querySelectorAll('ul >li')
+    // for (let i = 0; i < allLi.length; i++) {
+    //   allLi[i].onclick = function () {
+    //     console.log(i)
+    //   }
+    // }
+    let author = {
+      age: 20
+    }
+    // let name = author.name
+    // let age = author.age
+    // let { age = 10, name } = author
+    // let [a, b, c] = [1, 2, 3]
+    // console.log(name, age)
+    // console.log(a, b, c)
+
+    // function fun({ name }) {
+    //   console.log(name)
+    // }
+    // fun(author)
+    // let x = 10;
+    // let y = 20;
+    // [x, y] = [y, x];
+    // console.log(x, y)
+    // function showName({ name = '暂时没有姓名资料' }) {
+    //   console.log(name)
+    // }
+    // showName(author)
+    // function add(...x) {
+    //   console.log(x)
+    //   // x --->  [1,2,3,4,5,6,7,8,9]
+    // }
+    // add(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+    // function fun() { }
+    // console.log(fun.name)
+    // function add(a, b) {
+    //   return a + b
+    // }
+    // add(10, 20)
+    // 1.函数式创建  2.变量式
+
+    // 箭头函数的创建都是变量式的
+    // let add = (a, b) => a + b
+    // console.log(add(10, 20))
+    // function obj(name, age) {
+    //   return {
+    //     name: name,
+    //     age: age
+    //   }
+    // }
+    // const lily = obj('lily', 10)
+    // console.log(lily)
+
+    // let obj = (name, age) => {
+    //   return {
+    //     name: name, age: age
+    //   }
+    // }
+
+    // let obj = {
+    //   name: '小明',
+    //   say: () => { console.log(this) }
+    // }
+    // obj.say()
+    // let arr = [1, 2, 3, 4, 50]
+    // let newArr = arr.filter(ele => ele % 2 === 1)
+    // console.log(newArr)
+
+    // const name = '小红'
+    // const age = 6
+
+    // const obj = {
+    //   name,
+    //   age
+    // }
+    // console.log(obj)
+    // let obj = { foo: 123 };
+    // const res = Object.getOwnPropertyDescriptor(obj, 'foo')
+    // console.log(res)
+
+    // 合并对象
+    // 遍历对象  ---> 获取对象的所有属性名
+    // for  in  语句
+    // const obj = {
+    //   name: 'lily',
+    //   age: 20,
+    //   hobby: '搬砖'
+    // }
+    // const obj1 = {
+    //   say() {
+    //     console.log(this.name)
+    //   }
+    // }
+    // const newObj = { ...obj, ...obj1 }
+    // for (const key in obj) {
+    //   console.log(key)
+    // }
+    // const arr = Object.keys(obj)
+    // console.log(arr)
+    // const obj1 = { ...obj }
+
+    // obj1.age = 30
+    // console.log(obj)
+
+    // const hobby = obj.hobby || '默认的'
+    // console.log(hobby)
+    // let s1 = Symbol('foo');
+    // let s2 = Symbol('bar');
+    // let s3 = Symbol('foo');
+    // console.log(s1 == s3)
+
+    // const s = new Set();
+    // [2, 3, 5, 4, 5, 2, '2'].forEach(x => s.add(x));
+    // const newArr = Array.from(s)
+    // console.log(newArr)
+
+
+    // function Cat(name, age) {
+    //   this.name = name
+    //   this.age = age
+    // }
+    // Cat.prototype.say = function () {
+    //   console.log('喵喵喵')
+    // }
+    // const catOne = new Cat('花花儿', 3)
+    // console.log(catOne)
+
+    // 类
+    // 类里面只能写方法 而且必须有 constructor 方法，方法之间不能加逗号
+    // constructor 就相当于之前的构造函数,new 的时候相当于调用了 constructor
+    // 除了 constructor 方法之外的方法都相当于原型内公共方法
+    class Cat {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+      say() {
+        console.log('喵喵喵')
+      }
+    }
+    const catOne = new Cat('花花儿', 2)
+    console.log(catOne)
+  </script>
+</body>
+
+</html>

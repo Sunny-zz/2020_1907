@@ -12,8 +12,15 @@ npm 是 node package manger 的简写。电脑上安装了 node 会自带 npm �
 - 项目内如何使用安装的项目依赖
     需要使用模块的导入例如 `var $ = require('jquery')`，但是模块的导入浏览器不支持所以需要使用 webpack 工具打包编译。
 
+npm 下载包的时候，可以有两个后缀参数。第一个 `--save 或 -S  或省略`,加了这个参数包的版本及命名成会存储到 package.json 中的 dependencies 字段中，意思是这个包是项目的必须依赖(项目没有这个包跑步起来,或者叫项目上线的时候必须的依赖)。第二个 `--save-dev 或 -D`，加了这个参数包的版本及命名成会存储到 package.json 中的 devDependencies 字段中。意思是这个包是项目的非必须依赖(项目没有这个包可以跑步起来,或者叫项目开发的时候的依赖)
 
-
+npm 项目通常需要执行一些脚本命令，去打包编译文件、创建本地服务器。。。,npm 提供了一个方便的方式可以帮助你快速执行命令。需要提前在 package.json 中的 script 字段设置。例如将 `npx webpack` 命令，写到 package.json 的脚本字段中。
+    ```
+    "scripts": {
+        "build": "npx webpack"
+    },
+    ```
+直接使用 `npm run build` 就可以执行编译打包操作了。
 #### 常用命令
 - `npm config set registry http://registry.npm.taobao.org/` 将下载的包的资源替换成国内的淘宝镜像。
 - `npm config set loglevel=http` 设置下载时显示 http 下载进度。
@@ -22,3 +29,7 @@ npm 是 node package manger 的简写。电脑上安装了 node 会自带 npm �
 
 
 #### webpack 的简单使用
+- 创建一个新项目
+- 进入到项目内 `npm init -y`
+- 执行 `npm i webpack webpack-cli --save-dev`
+- 
