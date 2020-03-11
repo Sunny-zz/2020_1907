@@ -160,7 +160,7 @@ es6 新增的数据类型，创建成独一无二的数据。
   a[mySymbol] = 'Hello!';
 ```
 
-##### set 和 map 数据结构
+##### set  数据结构
 set 就是类似数组的数据。里面的所有元素不能相等。
 ```js
   const s = new Set();
@@ -182,6 +182,78 @@ class 就是将构造函数和原型组合到了一起并做了一些优化。
   }
   const catOne = new Cat('花花儿', 3)
   // 现在 class
+  class Cat {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+    
+  }
+  say = () => {
+    console.log(this.name)
+  }
+```
+类的继承
+```js
+  class Point {
+    constructor(x ,y){
+      this.x = x
+      this.y = y
+    }
+    toString(){
+      return `${this.x},${this.y}`
+    }
+  }
+  // 类如果想继承另外一个类的属性或方法需要在创建的时候使用 extends 关键字创建 ,在 constructor 函数内要使用 super 方法实现继承
+  class ColorPoint extends Point {
+    constructor(x,y,color){
+      // super 其实相当于 new 父级类
+      super(x,y)
+      // 设置私有的属性只能在 super 之后
+      this.color = color 
+    }
+    say = ()=>{
+      console.log('我是带颜色的坐标')
+    }
+  }
+  const colorX = new ColorPoint(10,-20,'red')
+  console.log(colorX.toString())
+  colorX.say()
 ```
 
+##### module 
+es6 模块，一个 js 文件就可以被当做成一个模块。可以使用模块的导入导出功能，导入到其他的 js 文件内。
+导出方式
+- 命名导出
+```js
+const a = 10
+const b = 100
+// export {b}
+// export {a}
+// 上面的两句等价于下面 
+export { a, b }
+```
+- 默认导出 
+```js
+const a = 10
+const b = 100
+// 导出一个变量 a
+// export default a
+// 导出了一个对象
+export default { a, b }
+```
 
+导入方式
+- 命名导入
+```js
+  // import {a,c} from './xx/js'
+  // 可以使用 as 重命名
+  import {a as aaa ,c} from './xx/js'
+```
+
+- 默认导入 
+```js 
+  // 命名随意
+  import xx from './xx.js'
+```
+
+**默认导出和命名导出可以同时存在，而且命名导出可以导出多次，默认导出只能一次。自定义的模块导入时写路径，第三方的模块导入时写包名**

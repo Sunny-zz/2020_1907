@@ -24,6 +24,7 @@
     姓名：
   </div>
   <script>
+    
     // let allLi = document.querySelectorAll('ul >li')
     // for (let i = 0; i < allLi.length; i++) {
     //   allLi[i].onclick = function () {
@@ -156,17 +157,54 @@
     // 类里面只能写方法 而且必须有 constructor 方法，方法之间不能加逗号
     // constructor 就相当于之前的构造函数,new 的时候相当于调用了 constructor
     // 除了 constructor 方法之外的方法都相当于原型内公共方法
-    class Cat {
-      constructor(name, age) {
-        this.name = name
-        this.age = age
+    // class Cat {
+    //   constructor(name, age) {
+    //     this.name = name
+    //     this.age = age
+        
+    //   }
+    //   // say() {
+    //   //   console.log(this.name)
+    //   // }
+    //   say = () => {
+    //     console.log(this.name)
+    //   }
+
+    // }
+    // const catOne = new Cat('花花儿', 2)
+    // console.log(catOne)
+    // catOne.say()
+    // const obj = {
+    //   name: '二哈'
+    // }
+    // obj.say = catOne.say
+    // obj.say()
+
+    class Point {
+      constructor(x ,y){
+        this.x = x
+        this.y = y
       }
-      say() {
-        console.log('喵喵喵')
+      toString(){
+        return `${this.x},${this.y}`
       }
     }
-    const catOne = new Cat('花花儿', 2)
-    console.log(catOne)
+    // 类如果想继承另外一个类的属性或方法需要在创建的时候使用 extends 关键字创建 ,在 constructor 函数内要使用 super 方法实现继承
+    class ColorPoint extends Point {
+      constructor(x,y,color){
+        // super 其实相当于 new 父级类
+        super(x,y)
+        // 设置私有的属性只能在 super 之后
+        this.color = color 
+      }
+      say = ()=>{
+        console.log('我是带颜色的坐标')
+      }
+    }
+    const colorX = new ColorPoint(10,-20,'red')
+    console.log(colorX)
+    console.log(colorX.toString())
+    colorX.say()
   </script>
 </body>
 
