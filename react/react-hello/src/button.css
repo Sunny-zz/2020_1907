@@ -1,0 +1,17 @@
+.btn {
+  width: 100px;
+  line-height: 40px;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+}
+.btn.zhuce{
+  color: orange;
+  background-color: green;
+}
+.btn.denglu{
+  color: #fff;
+  background-color: #00b3d4;
+}

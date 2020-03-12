@@ -1,6 +1,9 @@
 // app.js 就是一个组件，这个组件通常被当做根组件，所有额其他组件都直接或间接的放到 app 组件内
 import React from 'react';
 import Header from './Header'
+import Main from './Main'
+import Title from './Title'
+import Button from './Button'
 // 组件其实就是页面上的某个结构，app 组件可以理解成 body 结构。一个 js 文件代表一个组件
 // 组件的创建 
 // 1. 函数式组件  函数名必须大写，文件名也必须大写
@@ -10,10 +13,13 @@ import Header from './Header'
 function App () {
   return (
     <div>
+      <Title title='hello react' />
+      <Button text='注册' type='zhuce' />
       <Header />
+      <Main />
     </div>
-
   );
 }
 
 export default App;
+
