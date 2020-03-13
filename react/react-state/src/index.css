@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  height: 3000px;
+}
+*{
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
