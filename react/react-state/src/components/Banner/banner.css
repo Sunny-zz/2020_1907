@@ -1,0 +1,52 @@
+.banner {
+  width: 590px;
+  height: 470px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.banner > .pic >img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.banner >.list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 2;
+  left: 30px;
+  bottom: 20px;
+}
+.banner > .list li{
+  float: left;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.6);
+  margin-right: 10px;
+}
+.banner > .left ,.banner >.right{
+  width: 40px;
+  height: 80px;
+  background-color: rgba(0,0,0,0.6);
+  line-height: 80px;
+  text-align: center;
+  font-size: 26px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  z-index: 2;
+  cursor: pointer;
+}
+.banner > .left{
+  left: 0;
+}
+.banner > .right{
+  right: 0;
+}

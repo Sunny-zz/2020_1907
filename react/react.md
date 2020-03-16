@@ -120,7 +120,48 @@ react 的脚手架搭建出来的项目默认是单页面应用(SPA)。react 创
 
 ### 组件的 state 
 只要页面发生改变，就需要把改变的内容设置成 state，通过修改 state 从而达到改变页面的效果。组件的 state 一般只存在于 class 组件内。
+如何设置 state,如何使用
+```js
+  class Count extends Component {
+  state = {
+    number: 10
+  }
+  render () {
+    const { number } = this.state
+    return (
+      <div>
+        <button onClick={this.sub}>-</button>
+        <span>{number}</span>
+        <button onClick={this.add}>+</button>
+      </div>
+    )
+  }
+```
+如何修改
+```js
+  add = () => {   
+    this.setState({
+      number: this.state.number + 1
+    })
+  }
+  sub = () => {
+    this.setState({
+      number: this.state.number - 1
+    })
+  }
+```
 
+### 组件内的条件渲染
+
+### 组件内的列表渲染
+
+### 组件的生命周期函数(钩子)
+每一个 react 组件都有自己的生命周期。生命周期分为 挂载(第一次渲染到热面中) 、 更新(修改了组件的state，或者传递给组件的 props 发生了改变) 、卸载 、 错误处理。组件的生命周期其实就是组件的一些默认定义好的方法。
+- 挂载 ----> 组件首次渲染到页面中
+  - constructor()  
+  - static getDerivedStateFromProps()
+  - render()  返回需要渲染的内容
+  - componentDidMount() 组件在页面中渲染完毕,一般用来在页面初始化的时候修改 state
 
 
 
@@ -130,3 +171,4 @@ react 的脚手架搭建出来的项目默认是单页面应用(SPA)。react 创
   ```css
     box-sizing: border-box;
   ```
+

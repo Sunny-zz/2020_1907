@@ -2,6 +2,8 @@ import React from 'react';
 import Count from './components/Count'
 import Box from './components/Box/Box'
 import Drawer from './components/Drawer'
+import Tabs from './components/Tabs/Tabs'
+import Banner from './components/Banner/Banner'
 function App () {
   return (
     <div className="App">
@@ -11,6 +13,10 @@ function App () {
       <Box />
       <hr />
       <Drawer />
+      <hr />
+      <Tabs />
+      <hr />
+      <Banner />
     </div>
   );
 }
