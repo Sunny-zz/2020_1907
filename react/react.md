@@ -163,7 +163,21 @@ react 的脚手架搭建出来的项目默认是单页面应用(SPA)。react 创
   - render()  返回需要渲染的内容
   - componentDidMount() 组件在页面中渲染完毕,一般用来在页面初始化的时候修改 state
 
+### react 表单 
 
+##### 受控组件(推荐)
+将表单的一些元素自带的变化的值(比如 value checked selected...),设置成 state ，然后给表单元素绑定 onChange 事件修改对应的 state(根据 event.target 获取修改的值)。
+
+##### 非受控组件
+不需要将表单的一些元素自带的变化的值设置成 state 也不写这些属性。如果想设置默认的话使用 defaultValue  defaultChecked defaultSelected，然后获取输入的结果需要使用标签的 ref 属性
+ref 例子
+```jsx
+<input id='input' type="text" defaultValue='123' ref={inputDom => this.input = inputDom} />
+// this.input 就可以获取对应 dom，可以使用 this.input.value 获取输入的内容
+```
+
+### 状态提升
+多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去。也就是将共同修改的 state 提升到共同的父组件中去, 当作props 传递给子组件。
 
 #### 盒模型结构
 - 标准模型

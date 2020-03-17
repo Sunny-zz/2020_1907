@@ -1,0 +1,7 @@
+.App{
+  overflow: auto;
+  height: 100vh;
+}
+.wrap{
+  height: 2000px;
+}
