@@ -5,7 +5,7 @@ class ManyCheckbox extends Component {
   }
   render () {
     const { fruits } = this.state
-    console.log(fruits)
+    // console.log(fruits)
     return (
       <div>
         <h2>请问勾选出下列你喜欢的水果</h2>

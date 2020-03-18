@@ -1,0 +1,31 @@
+@keyframes hide {
+  0%{
+    width: 200px;
+    height: 200px;
+  }
+  100%{
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+@keyframes show {
+  0%{
+    display: block;
+    width: 0;
+    height: 0;
+  }
+  100%{
+    width: 200px;
+    height: 200px;
+  }
+}
+.box{
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+  /* transition:  all 0.5s; */
+  /* 默认当你给一个元素样式加了动画  animation ，这个 animation 会在初始执行一次 当元素 none --> block 的时候会执行 */
+  /* 当你通过 js 或其他操作给一个元素加了 不一样 animation 这个动画也会执行一次 */
+
+}
