@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+
+  </div>
+  <script>
+    // 前后台的数据交互
+    // ajax  异步的 js 和 xml
+    // ajaj  后台返回的数据变成了 j   json 数据(跟对象基本一样)
+
+
+    // 模拟后台1. 使用 npm 下的 json-server 包，搭建本地服务器，创建局域网数据，局域网内可以访问。
+    // ajax  方案 
+    // 1. 原生实现 ajax 
+    // a. 创建 XMLHttpRequest 对象
+    const xhr = new XMLHttpRequest()
+    // b. 创建请求（使用 xhr 对象下的 open 方法）
+    // open 方法接受三个参数 1. 请求类型(GET POST PUT PATCH DELETE ...) 2. 数据的地址(需要后台提供) 3. 是否异步(默认 true 异步)
+    // GET 一般用于向后台获取数据(比如获取文章内容，获取商品列表。。。)
+    // POST 一般用于向后台传递数据(比如添加评论，注册，登录。。。)
+    // DELETE 用于删除操作
+    // PUT 替换数据
+    // PATCH 更新数据
+    // 到底请求需要使用哪个方法后台决定
+    xhr.open("GET", "http://localhost:8080/goods")
+    // c. 向服务器发送请求 （使用 xhr 下的 send 方法）
+    xhr.send();
+    // d. 监听后台接收的响应变化，请求结束拿到后台响应结果 (使用 xhr 的 onreadystatechange 方法监听)
+    xhr.onreadystatechange = function () {
+      // 监听两个内容(也可以只监听第一个) 1. readyState 代表的是响应的状态值    2.status 响应的状态码 
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        // 使用 xhr 的 reponseText 获取后台的响应
+        // 获取的内容是 json 字符串
+        // 想要使用的话需要将 json 串转化成对象类型
+        // JSON.parse(json串)
+        console.log(JSON.parse(xhr.responseText))
+      }
+    }
+    //
+  </script>
+</body>
+
+</html>
