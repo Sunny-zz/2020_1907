@@ -1,22 +1,43 @@
 {
   "goods": [
     {
-      "category": "Sporting Goods",
-      "price": "$9.99",
+      "category": "Goods",
+      "price": "$39.99",
       "stocked": true,
-      "name": "Baseball"
+      "name": "Baseball",
+      "id": "gt676d",
+      "likes": 100
     },
     {
       "category": "Sporting Goods",
-      "price": "$29.99",
-      "stocked": false,
-      "name": "Basketball"
+      "price": "$39.99",
+      "stocked": true,
+      "name": "Baseball",
+      "id": "gt676d",
+      "likes": 102
     },
     {
       "category": "Electronics",
       "price": "$99.99",
       "stocked": true,
-      "name": "iPod Touch"
+      "name": "iPod Touch",
+      "id": "567tgyh",
+      "likes": 60
+    },
+    {
+      "category": "Electronics",
+      "price": "$9999.99",
+      "stocked": "true",
+      "name": "iphone 5",
+      "id": "kNQ06-U",
+      "likes": 40
+    },
+    {
+      "category": "Electronics",
+      "price": "$10999.99",
+      "stocked": true,
+      "name": "iphone 6",
+      "id": "olbFbJG"
     }
   ]
 }

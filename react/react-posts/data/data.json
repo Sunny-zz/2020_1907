@@ -1,0 +1,18 @@
+{
+  "posts": [
+    {
+      "id": "1d12",
+      "author": "小张",
+      "title": "es6 第八版",
+      "likeCount": 100,
+      "commentCount": 20
+    },
+    {
+      "id": "5tr5",
+      "author": "小王",
+      "title": "小谈 react",
+      "likeCount": 20,
+      "commentCount": 10
+    }
+  ]
+}

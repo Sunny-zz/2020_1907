@@ -11,6 +11,8 @@
   <div>
 
   </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
   <script>
     // 前后台的数据交互
     // ajax  异步的 js 和 xml
@@ -21,7 +23,7 @@
     // ajax  方案 
     // 1. 原生实现 ajax 
     // a. 创建 XMLHttpRequest 对象
-    const xhr = new XMLHttpRequest()
+    // const xhr = new XMLHttpRequest()
     // b. 创建请求（使用 xhr 对象下的 open 方法）
     // open 方法接受三个参数 1. 请求类型(GET POST PUT PATCH DELETE ...) 2. 数据的地址(需要后台提供) 3. 是否异步(默认 true 异步)
     // GET 一般用于向后台获取数据(比如获取文章内容，获取商品列表。。。)
@@ -30,21 +32,143 @@
     // PUT 替换数据
     // PATCH 更新数据
     // 到底请求需要使用哪个方法后台决定
-    xhr.open("GET", "http://localhost:8080/goods")
+    // 实现的 get 请求 获取商品列表数据
+    // xhr.open("GET", "http://localhost:8080/goods")
     // c. 向服务器发送请求 （使用 xhr 下的 send 方法）
-    xhr.send();
+    // xhr.send();
     // d. 监听后台接收的响应变化，请求结束拿到后台响应结果 (使用 xhr 的 onreadystatechange 方法监听)
-    xhr.onreadystatechange = function () {
-      // 监听两个内容(也可以只监听第一个) 1. readyState 代表的是响应的状态值    2.status 响应的状态码 
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        // 使用 xhr 的 reponseText 获取后台的响应
-        // 获取的内容是 json 字符串
-        // 想要使用的话需要将 json 串转化成对象类型
-        // JSON.parse(json串)
-        console.log(JSON.parse(xhr.responseText))
-      }
-    }
-    //
+    // xhr.onreadystatechange = function () {
+    //   // 监听两个内容(也可以只监听第一个) 1. readyState 代表的是响应的状态值    2.status 响应的状态码 
+    //   if (xhr.readyState == 4 && xhr.status == 200) {
+    //     // 使用 xhr 的 reponseText 获取后台的响应
+    //     // 获取的内容是 json 字符串
+    //     // 想要使用的话需要将 json 串转化成对象类型
+    //     // JSON.parse(json串)
+    //     console.log(JSON.parse(xhr.responseText))
+    //   }
+    // }
+    // 实现 post 请求 给商品列表添加数据
+    // xhr.open('POST','http://localhost:8080/goods')
+    // // 向后台发送添加数据请求的时候 传递给后台的数据不需要添加 id 属性
+    // const newGoods = {
+    //   category: "Electronics",
+    //   price: "$9999.99",
+    //   stocked: true,
+    //   name: "iphone 5"
+    // }
+    // send 方法发送什么样的数据给后台(一般来说需要后台提供模版)
+    // 向后台发送的数据一般写成对象类型  {accesstoken: , id: , content: ''} 然后通过某些方法转化成 json 字符串,因为前后台的数据交互大部分是 json 类型的数据，所以向后台传递的数据也要是 json 类型。
+    // 使用原生 js 向后台发送 post 请求的时候需要定义好发送的数据的数据类型。
+    // 一般更新的请求后台会反馈更新之后的内容
+    // console.log(JSON.stringify(newGoods))
+    // xhr.setRequestHeader("Content-type","application/json");
+    // xhr.send(JSON.stringify(newGoods))
+    //  xhr.onreadystatechange = function () {
+    //   if (xhr.readyState == 4) {
+    //     console.log(JSON.parse(xhr.responseText))
+    //   }
+    // }
+    // 实现 delete 请求 删除某一个商品
+    // xhr.open('DELETE','http://localhost:8080/goods/12dedw')
+    // xhr.send()
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState == 4) {
+    //     console.log(JSON.parse(xhr.responseText))
+    //   }
+    // }
+    // 实现 patch 请求 更新某一个商品的某一条数据  
+    // xhr.open('PATCH','http://localhost:8080/goods/gt676d')
+    // xhr.setRequestHeader("Content-type","application/json");
+    // xhr.send(JSON.stringify({price: '$39.99'}))
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState == 4) {
+    //     console.log(JSON.parse(xhr.responseText))
+    //     document.write(xhr.responseText)
+    //   }
+    // }
+    // console.log(11111)
+
+    // 2. jquery 实现
+    // 三个常用请求方法  $.ajax()  $.get()  $.post()
+    // $.get('http://localhost:8080/goods/gt676d',function (res) {
+    //   console.log(res)
+    // })  
+    // const newGoods = {
+    //   category: "Electronics",
+    //   price: "$9999.99",
+    //   stocked: true,
+    //   name: "iphone 5"
+    // }
+    // $.post('http://localhost:8080/goods',newGoods,function(res){
+    //   console.log(res)
+    // }) 
+    // const limit = 3 
+    
+    // $.ajax({
+    //   type: 'GET',
+    //   // 地址栏后面的 ？ 查询部分可以叫做 get 方法的参数 
+    //   url: `http://localhost:8080/goods?_limit=${limit}`,
+    //   success : function (res) {
+    //     console.log(res)
+    //   }
+    // })
+    
+    // $.ajax({
+    //   type: 'POST',
+    //   url: 'http://localhost:8080/goods',
+    //   data: newGoods,
+    //   success : function (res) {
+    //     console.log(res)
+    //   },
+    //   error: function (err) {
+    //     console.log(err)
+    //   }
+    // })
+    
+    // 原生的 ajax  和  jquery 的 ajax 异步请求的处理方式是一致的(使用的是回调函数)
+    // axios 使用的是 promise 方式来处理的异步请求
+    // 3. axios   
+    // axios 请求的返回值并不直接是你想要的数据 而是一个对象 对象内的 data 才是真正的数据
+    // get 请求
+    // axios.get('http://localhost:8080/goods')
+    // .then(function (response) {
+    //   console.log(response.data);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+    // post 请求
+    // const newGoods = {
+    //   category: "Electronics",
+    //   price: "$10999.99",
+    //   stocked: true,
+    //   name: "iphone 6"
+    // }
+    // axios.post('http://localhost:8080/goods',newGoods)
+    // .then(function (response) {
+    //   console.log(response.data);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+ 
+    // axios 执行多个并发请求
+    // 使用 axios.all 方法
+    // axios.all([axios.get('http://localhost:8080/goods?name=Baseball'),axios.get('http://localhost:8080/goods?name=iphone 5')]).then(res => {
+    //   console.log(res[0].data,res[1].data)
+    // })
+
+  // 在浏览器内向其他的服务器发送请求获取数据是由限制的
+  // 浏览器的同源策略 : 域名 协议 端口号 都一致
+  // 只有同源的一些文档和数据的那个才能和我这个页面之间做交互
+  // 但是有一些跨域(cors)操作是被允许的
+  // 1. 跨域资源嵌入  link  script  img ...
+  // 2. 有些浏览默认支持本地(localhost)跨域  谷歌浏览器
+  // http://localhost:8080/goods
+
+  // 一般来说跨域问题 ： 后台给你一些配置让你加在某些地方
+
+  // mock.js 也可以用来模拟后台数据  会拦截 ajax 
   </script>
 </body>
 
