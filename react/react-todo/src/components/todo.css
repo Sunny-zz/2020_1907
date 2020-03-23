@@ -1,0 +1,26 @@
+.todo-item {
+  list-style: none;
+  /* position: relative; */
+}
+.todo-item input[type=checkbox] {
+  /* opacity: 0;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  margin: 0; */
+  display: none;
+}
+.todo-item label {
+  width: 20px;  
+  height: 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-position: center center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+}
+.todo-item input[type=checkbox]:checked + label{
+  background-image: url('../img/gou.png');
+}
