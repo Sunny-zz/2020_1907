@@ -24,3 +24,9 @@
 .todo-item input[type=checkbox]:checked + label{
   background-image: url('../img/gou.png');
 }
+.todo-item button {
+  display: none;
+}
+.todo-item:hover button{
+  display: inline-block;
+}
