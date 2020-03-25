@@ -1,0 +1,22 @@
+.home .home-header{
+  height: 40px;
+  line-height: 40px;
+  background-color: #efefef;
+}
+.home .home-header ul{
+  width: 60%;
+  margin: 0 auto;
+  /* overflow: hidden; */
+  list-style: none;
+  padding-left: 0;
+}
+.home-header ul li {
+  float: left;
+  margin-right: 20px;
+}
+.home-header ul li a{
+  color: #71777c;
+}
+.home-header ul li .active{
+  color: #007fff;
+}

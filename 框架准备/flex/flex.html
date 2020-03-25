@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      width: 1000px;
+      height: 600px;
+      background-color: #ccc;
+      display: flex;
+      /* flex-direction: row-reverse; */
+      /* flex-wrap: wrap; */
+      /* justify-content: center; */
+      /* align-items: center; */
+      /* 自己变成容器 自带轴线(规定的是项目的排列方式) 主轴默认是横向的 */
+      /* 默认项目不会超出容器，并且在一条主轴线上 */
+      /* 子级会变成项目 项目自动变成 block 而且按照容器的主轴线排列 */
+    }
+    .box1{
+      width: 900px;
+      height: 200px;
+      background-color: #000;
+      /* order: 2; */
+      /* flex-grow: 1; */
+    }
+    .box2{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      /* flex-shrink: 0; */
+      /* order: 1; */
+      align-self: flex-end;
+    }
+  </style>
+</head>
+<body>
+  <!-- flex 布局 弹性盒子 -->
+  <!-- 不能使用 float、clear和vertical-align  -->
+  <div class="box">
+    <div class="box1"></div>
+    <div class="box2"></div>
+  </div>
+</body>
+</html>
