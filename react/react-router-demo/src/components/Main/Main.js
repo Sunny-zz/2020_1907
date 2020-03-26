@@ -3,6 +3,7 @@ import { Route, withRouter } from 'react-router-dom';
 import Home from '../Home/Home';
 import Pins from '../Pins/Pins';
 import Topics from '../Topics/Topics';
+import Post from '../Post/Post';
 // react fragments允许组件返回多个节点    <>  </>  包裹返回值
 const Main = (props) => {
   // 某些不是页面组件的组件想要使用当前路由的的一些 props 信息,需要使用 withRouter 方法实现
@@ -16,6 +17,9 @@ const Main = (props) => {
     <Route exact={props.location.pathname.indexOf('welcome') >= 0 ? false : true} path='/' component={Home} />
     <Route path='/pins' component={Pins} />
     <Route path='/topics' component={Topics} />
+    {/* 设置动态路由地址 很多个地址全部都指向一个路由 说白了就是在地址中加一个变量 */}
+    {/* '/post/:id'   意思是 /post/ 后面只要输入内容就成功匹配  */}
+    <Route path='/post/:id' component={Post} />
   </>
 }
 export default withRouter(Main)
