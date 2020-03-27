@@ -15,11 +15,13 @@ const Main = (props) => {
     {/* 如何获取当前页面的地址栏的信息  原生 window.location.href  */}
 
     <Route exact={props.location.pathname.indexOf('welcome') >= 0 ? false : true} path='/' component={Home} />
+    <Route path='/search' component={Home} />
     <Route path='/pins' component={Pins} />
     <Route path='/topics' component={Topics} />
     {/* 设置动态路由地址 很多个地址全部都指向一个路由 说白了就是在地址中加一个变量 */}
     {/* '/post/:id'   意思是 /post/ 后面只要输入内容就成功匹配  */}
     <Route path='/post/:id' component={Post} />
+
   </>
 }
 export default withRouter(Main)

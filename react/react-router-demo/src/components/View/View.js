@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import './view.css'
+import moment from 'moment'
 class View extends Component {
   state = {
     list: []
@@ -29,7 +30,9 @@ class View extends Component {
     return <div className='view'>
       {
         list.length ? <ul>
-          {list.map(item => <li key={item.id} ><Link to={`/post/${item.id}`}>{item.title}</Link></li>)}
+          {list.map(item => <li key={item.id} >
+            <div>创建于·{moment(item.createAt).fromNow()}</div>
+            <Link to={`/post/${item.id}`}>{item.title}</Link></li>)}
         </ul> : <div><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585201979320&di=9da9efe892503897edf0b2e1f9f4f55e&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F357d23d074c2954d568d1a6f86a5be09d190a45116e95-0jh9Pg_fw658" alt="" /></div>
       }
     </div>
@@ -52,6 +55,8 @@ class View extends Component {
   changeList = (type) => {
     const filterStr = type === 'recommended' ? '?isRecommended=true' : `?type=${type}`
     // console.log(filterStr)
+    //  ?query=html   -----> html   ---> title_like=html
+    // 筛选 html 类  发请求   `http://localhost:8080/articleList?title_like=html` 
     axios.get(`http://localhost:8080/articleList${filterStr}`).then(res => {
       this.setState({
         list: res.data
