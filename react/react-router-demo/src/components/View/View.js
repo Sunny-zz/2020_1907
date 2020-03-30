@@ -9,9 +9,10 @@ class View extends Component {
   }
   // 想要让视图更新  1. 修改对应的 state   2. props 改变了那么 props 对应的视图也会自动更新
   // 组件在页面中出现
+  // location   pathname      query 
   componentDidMount () {
-    console.log('组件出现了需要获取数据')
-    const type = this.getType(this.props.pathname)
+    // console.log('组件出现了需要获取数据')
+    const type = this.getType(this.props.location.pathname)
     this.changeList(type)
   }
   // 实现点击父组件的 navLink 更新子组件的 list 
@@ -46,17 +47,21 @@ class View extends Component {
     // if () {
     // 发请求更新 state
     // }
-    if (prevProps.pathname !== this.props.pathname) {
-      console.log('组件 props 更新了需要获取数据')
-      const type = this.getType(this.props.pathname)
+    if (prevProps.location !== this.props.location) {
+      // console.log('组件 props 更新了需要获取数据')
+      const type = this.getType(this.props.location.pathname)
       this.changeList(type)
     }
   }
   changeList = (type) => {
-    const filterStr = type === 'recommended' ? '?isRecommended=true' : `?type=${type}`
+    // console.log(this.props.location)
+    const filterStr = type === 'recommended' ? '?isRecommended=true' : type === 'search' ? `?title_like=${this.props.location.search.replace('?query=', '')}` : `?type=${type}`
     // console.log(filterStr)
     //  ?query=html   -----> html   ---> title_like=html
     // 筛选 html 类  发请求   `http://localhost:8080/articleList?title_like=html` 
+    // recommended  ?isRecommended=true 
+    // 'frontend', 'backend', 'android'     ?type=${type}
+    // search    ?title_like=java
     axios.get(`http://localhost:8080/articleList${filterStr}`).then(res => {
       this.setState({
         list: res.data
@@ -67,7 +72,7 @@ class View extends Component {
     // 方案一
     // return pathname.includes('backend') ? 'backend' : pathname.includes('android') ? 'android' : pathname.includes('frontend') ? 'frontend' : 'recommended'
     // 方案二
-    const allType = ['recommended', 'frontend', 'backend', 'android']
+    const allType = ['recommended', 'frontend', 'backend', 'android', 'search']
     // pathname    /welcome/android  
     return allType.find(item => pathname.includes(item)) || 'recommended'
   }

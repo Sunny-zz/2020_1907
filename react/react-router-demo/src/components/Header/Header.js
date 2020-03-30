@@ -29,7 +29,10 @@ class Header extends Component {
   search = () => {
     // 获取输入内容   跳转到搜索结果页
     // 如何不使用 link 组件实现页面的跳转   history 下的 push 方法
-    this.props.history.push(`/search?query=${this.state.searchValue}`)
+    const { searchValue } = this.state
+    if (searchValue.trim()) {
+      this.props.history.push(`/search?query=${this.state.searchValue}`)
+    }
   }
 }
 export default withRouter(Header)
