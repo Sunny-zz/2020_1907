@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, message } from 'antd';
+import { Button, message, DatePicker } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 class AntdDemo extends Component {
   state = {
@@ -9,7 +9,7 @@ class AntdDemo extends Component {
   render () {
     const { isLogin, btnLoading } = this.state
     return <div>
-      <Button danger size='small'>按钮三</Button>
+      <Button danger size='small'>按钮</Button>
       <br />
       <Button onClick={() => console.log(1111)} shape='circle' ghost type="primary">1</Button>
       <br />
@@ -34,6 +34,7 @@ class AntdDemo extends Component {
           }
         }, 1000);
       }} type='primary'  >提交</Button>
+      <DatePicker />
     </div>
   }
 }
