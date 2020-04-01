@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.less';
+import 'typeface-roboto';
+import 'swiper/css/swiper.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ConfigProvider } from 'antd';
