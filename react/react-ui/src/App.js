@@ -1,5 +1,6 @@
 import React from 'react';
-import EchartsDemo from './components/EchartsDemo/EchartsDemo';
+import RechartsDemo from './components/RechartsDemo/RechartsDemo';
+// import EchartsDemo from './components/EchartsDemo/EchartsDemo';
 // import SwiperDemo from './components/SwiperDemo/SwiperDemo';
 // import MaterialUiDemo from './components/MaterialUiDemo/MaterialUiDemo';
 // import AntdDemo from './components/AntdDemo/AntdDemo';
@@ -39,8 +40,10 @@ function App () {
       <hr/>*/}
       {/* <h2>swiper</h2>
       <SwiperDemo /> */}
-      <h2> Echarts 数据可视化</h2>
-      <EchartsDemo />
+      {/* <h2> Echarts 数据可视化</h2>
+      <EchartsDemo /> */}
+      <h2>Recharts 数据可视化</h2>
+      <RechartsDemo />
     </div>
   );
 }

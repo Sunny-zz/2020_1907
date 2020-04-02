@@ -21,6 +21,7 @@
     "react-dom": "^16.13.0",
     "react-id-swiper": "^3.0.0",
     "react-scripts": "3.4.0",
+    "recharts": "^1.8.5",
     "styled-components": "^5.0.1",
     "swiper": "^5.3.6",
     "typeface-roboto": "0.0.75"
