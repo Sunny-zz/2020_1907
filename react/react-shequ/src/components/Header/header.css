@@ -1,0 +1,13 @@
+/* 样式要求使用 df  使用 sass 或者 less */
+header {
+  width: 100%;
+  background: #1c6132;
+  font-size: 14px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  width: 40px;
+}
