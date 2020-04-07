@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './header.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 class Header extends Component {
   state = {
     userInfo: null,
@@ -10,7 +11,7 @@ class Header extends Component {
     const token = localStorage.getItem('token')
     if (token) {
       axios.post('https://www.vue-js.com/api/v1/accesstoken', { accesstoken: token }).then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         // 登陆成功之后存一个 token 到本地
         localStorage.setItem('token', token)
         delete res.data.success
@@ -26,10 +27,10 @@ class Header extends Component {
   render () {
     const { userInfo, token } = this.state
     return <header>
-      <img src="https://www.vue-js.com/public/images/vue.png" alt="" />
+      <Link to='/'><img src="https://www.vue-js.com/public/images/vue.png" alt="" /></Link>
       {/* 因为这个网站登录不需要输入用户名和密码，只需要输入一个个人的 token 码向后台发送请求即可 */}
       {
-        userInfo ? <div><img src={userInfo.avatar_url} alt="" /><span>{userInfo.loginname}</span><button>登出</button></div> : <div>
+        userInfo ? <div><img src={userInfo.avatar_url} alt="" /><span>{userInfo.loginname}</span><button onClick={this.logout}>登出</button></div> : <div>
           <input onChange={(event) => this.setState({ token: event.target.value })} value={token} type="text" />
           <button onClick={this.login}>登录</button>
         </div>
@@ -55,6 +56,12 @@ class Header extends Component {
         alert('登录失败，密码不对')
       })
     }
+  }
+  logout = () => {
+    this.setState({
+      userInfo: null
+    })
+    localStorage.removeItem('token')
   }
 }
 export default Header

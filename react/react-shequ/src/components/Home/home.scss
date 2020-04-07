@@ -1,0 +1,35 @@
+.home {
+  .nav ul {
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+    justify-content: space-around;
+    list-style: none;
+    width: 600px;
+    height: 80px;
+    align-items: center;
+  }
+
+  .nav a {
+    color: #369219;
+    padding: 3px 4px;
+  }
+
+  .nav a.active {
+    background-color: #369219;
+    color: #fff;
+    border-radius: 3px;
+  }
+
+  .topic-list li {
+    margin-bottom: 10px;
+    list-style: none;
+  }
+
+  .topic-list img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+}
