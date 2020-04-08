@@ -46,7 +46,7 @@ class Home extends Component {
   }
   getTopics = (type = 'all', page = '1', limit = 20) => {
     axios.get(`https://www.vue-js.com/api/v1/topics?tab=${type}&limit=${limit}&page=${page}`).then(res => {
-      console.log(res.data.data)
+      // console.log(res.data.data)
       this.setState({
         topics: res.data.data
       })

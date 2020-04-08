@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './header.css'
 import axios from 'axios'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 class Header extends Component {
   state = {
     userInfo: null,
@@ -14,6 +14,7 @@ class Header extends Component {
         // console.log(res.data)
         // 登陆成功之后存一个 token 到本地
         localStorage.setItem('token', token)
+        localStorage.setItem('author_id', res.data.id)
         delete res.data.success
         this.setState({
           userInfo: res.data
@@ -44,13 +45,15 @@ class Header extends Component {
       // 地址前缀 https://www.vue-js.com/api/v1/
       // 参考 api   post /accesstoken 验证 accessToken 的正确性
       axios.post('https://www.vue-js.com/api/v1/accesstoken', { accesstoken: token }).then(res => {
-        // console.log(res.data)
+        console.log(res.data)
         // 登陆成功之后存一个 token 到本地
         localStorage.setItem('token', token)
+        localStorage.setItem('author_id', res.data.id)
         delete res.data.success
         this.setState({
           userInfo: res.data
         })
+        this.props.history.push('/')
       }).catch(() => {
         // 写成 antd 的提示
         alert('登录失败，密码不对')
@@ -61,10 +64,11 @@ class Header extends Component {
     this.setState({
       userInfo: null
     })
-    localStorage.removeItem('token')
+    localStorage.clear()
+    this.props.history.push('/')
   }
 }
-export default Header
+export default withRouter(Header)
 
 // 请求解释
 // 1. get /topics 主题首页
