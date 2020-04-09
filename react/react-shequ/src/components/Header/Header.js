@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import './header.css'
 import axios from 'axios'
 import { Link, withRouter } from 'react-router-dom';
+import logo from '../../img/vue.png'
 class Header extends Component {
   state = {
     userInfo: null,
-    token: '79b3b12e-9631-467b-9210-c68449c98a35'
+    token: '79b3b12e-9631-467b-9210-c68449c98a35',
+    messageCount: 0
   }
   componentDidMount () {
     const token = localStorage.getItem('token')
@@ -23,18 +25,58 @@ class Header extends Component {
         // 写成 antd 的提示
         alert('登录失败，密码不对')
       })
+      // get /message/count 获取未读消息数
+      // 接收 get 参数
+      // accesstoken String
+      // axios.get(`https://www.vue-js.com/api/v1/message/count?accesstoken=${token}`).then(res => {
+      //   // console.log(res.data.data)
+      //   this.setState({
+      //     messageCount: res.data.data
+      //   })
+      // })
+      this.getMessageCount()
     }
   }
+  // 因为 header 组件一直会出现在页面中 所以每次切换地址栏的时候 cdu 都会执行
+  componentDidUpdate (prevProps) {
+    // 当你点击了未读消息进入到消息页面是时 默认将所有的未读消息变成了已读
+    // 就要更新未读消息数
+    // 什么时候更新
+    // 当页面地址改变时更新未读消息数 但是当前处于查看消息页面不更新
+    if (this.props.location.pathname !== prevProps.location.pathname && this.props.location.pathname !== '/my/messages') {
+      // console.log(1111111)
+      this.getMessageCount()
+    }
+  }
+  getMessageCount = () => {
+    const token = localStorage.getItem('token')
+    axios.get(`https://www.vue-js.com/api/v1/message/count?accesstoken=${token}`).then(res => {
+      // console.log(res.data.data)
+      this.setState({
+        messageCount: res.data.data
+      })
+    })
+  }
   render () {
-    const { userInfo, token } = this.state
+    const { userInfo, token, messageCount } = this.state
     return <header>
-      <Link to='/'><img src="https://www.vue-js.com/public/images/vue.png" alt="" /></Link>
+      <Link to='/'><img src={logo} alt="" /></Link>
       {/* 因为这个网站登录不需要输入用户名和密码，只需要输入一个个人的 token 码向后台发送请求即可 */}
       {
-        userInfo ? <div><img src={userInfo.avatar_url} alt="" /><span>{userInfo.loginname}</span><button onClick={this.logout}>登出</button></div> : <div>
-          <input onChange={(event) => this.setState({ token: event.target.value })} value={token} type="text" />
-          <button onClick={this.login}>登录</button>
+        userInfo ? <div style={{ display: 'flex', justifyContent: 'space-between', width: '500px', alignItems: 'center' }}>
+          <img src={userInfo.avatar_url} alt="" />
+          <span>{userInfo.loginname}</span>
+          <button onClick={this.logout}>登出</button>
+          <span>{messageCount ? messageCount : ''} <Link to='/my/messages'>未读消息</Link></span>
+          {this.props.location.pathname === '/topic/create' ? '' :
+            <button><Link to='/topic/create'>发布话题</Link></button>
+          }
         </div>
+          :
+          <div>
+            <input onChange={(event) => this.setState({ token: event.target.value })} value={token} type="text" />
+            <button onClick={this.login}>登录</button>
+          </div>
       }
     </header>
   }

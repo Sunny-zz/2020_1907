@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Skeleton, message } from 'antd';
 import E from 'wangeditor'
+import { Link } from 'react-router-dom';
 class Topic extends Component {
   state = {
     topic: null,
@@ -17,7 +18,7 @@ class Topic extends Component {
       topic.replies.forEach(item => {
         item.showTextarea = false
       })
-      console.log(topic)
+      // console.log(topic)
       this.setState({
         topic: topic
       })
@@ -175,7 +176,7 @@ class Topic extends Component {
           <span>置顶</span>
           <h2>{topic.title}</h2>
         </div>
-        <div className='header-bottom'><span>发布于·{topic.create_at}</span></div>
+        <div className='header-bottom'><span>发布于·{topic.create_at}</span><span>作者 · <Link to={`/user/${topic.author.loginname}`}>{topic.author.loginname}</Link> </span></div>
       </div>
       <hr />
       {/* 文章详情的样式  所有文章的内容的 class 名都是固定的，而且小标题段落图片的样式全部都是一样的 */}
@@ -184,9 +185,9 @@ class Topic extends Component {
         <ul>
           {topic.replies.map(item => <li style={{ borderBottom: '1px solid #ccc', padding: '10px', width: '80%' }} key={item.id}><div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div>
-              <img style={{ width: '40px', height: '40px' }} src={item.author.avatar_url} alt="" />
+              <Link to={`/user/${item.author.loginname}`}><img style={{ width: '40px', height: '40px' }} src={item.author.avatar_url} alt="" /></Link>
               <div>
-                <span>{item.author.loginname}</span>
+                <Link to={`/user/${item.author.loginname}`}><span>{item.author.loginname}</span></Link>
                 <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
               </div>
             </div>
