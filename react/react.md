@@ -192,7 +192,20 @@ react 路由的创建
     - Route  路由组件，代表的一页
     
 
+### react 部署
+#### HashRouter 类部署
+将我们的项目部署到 github 
+- 保证本地的开发项目(localhost:3000) 能正常运行
+- 如果部署的网址是二级网址就会出问题 例如`http://www.baidu.com` 一级网址   `http://www.baidu.com/xxx` 二级目录网址
+  - 我们将项目部署到了 github 的二级网站 例如 `sunny-zz.github.io/xxxx`
+  - 会报错，提示文件找不到地址不对。
+- 需要修改 create-react-app 配置
+  - 到项目下的 package.json 文件,在根对象下添加一项 homepage 值为你的 gh-pages 部署的网址例如 `https://sunny-zz.github.io/react-shequ-demo/`
 
+- 将项目作为一个 git 仓库闯到 github 上 mater 分支，就相当于存储了源代码,要注意上传的时候需要 .gitignore
+- 执行 `npm run build` 将项目的生产版本打包到 build 下
+- 在仓库新建分支 `gh-pages`,里面的默认内容全部删除,替换成 bulid 里面的内容，然后上传(可以借助 gh-pages npm 包上传)
+  
 
 #### 盒模型结构
 - 标准模型

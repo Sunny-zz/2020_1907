@@ -124,6 +124,7 @@ class Topic extends Component {
   handleReply = ({ id, author }) => {
     // 出现对应的 textArea 修改 topic
     // 输如框的内容加上评论的 @作者名   修改 textareaComment
+
     const { topic } = this.state
     const newTopic = { ...topic }
     newTopic.replies.forEach(ele => {
@@ -183,7 +184,8 @@ class Topic extends Component {
       <div className='topic-content' dangerouslySetInnerHTML={{ __html: topic.content }}></div>
       <div className="comment-box">
         <ul>
-          {topic.replies.map(item => <li style={{ borderBottom: '1px solid #ccc', padding: '10px', width: '80%' }} key={item.id}><div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          {topic.replies.map(item => <li id={item.id} style={{ borderBottom: '1px solid #ccc', padding: '10px', width: '80%' }} key={item.id}><div style={{ display: 'flex', justifyContent: 'space-between' }}>
+
             <div>
               <Link to={`/user/${item.author.loginname}`}><img style={{ width: '40px', height: '40px' }} src={item.author.avatar_url} alt="" /></Link>
               <div>
@@ -194,11 +196,11 @@ class Topic extends Component {
             {/* 登录和不登录*/}
             {/* 回复按钮存在或不存在  */}
             {/* 不登录点赞按钮颜色不变化 登陆之后点赞按钮颜色根据用户 id 和 item.ups 比较*/}
-            <div><button onClick={() => this.up(item.id)} style={{ color: item.ups.includes(author_id) ? 'red' : '#000' }}>点赞</button><span>{item.ups.length}</span>{token ? <button onClick={() => this.handleReply(item)}>回复</button> : ''}</div>
+            <div><button onClick={() => this.up(item.id)} style={{ color: item.ups.includes(author_id) ? 'red' : '#000' }}>点赞</button><span>{item.ups.length}</span>{token ? <button onClick={() => this.handleReply(item)}> <label htmlFor={item.id}>回复</label> </button> : ''}</div>
           </div>
             {
               item.showTextarea ? <div>
-                <textarea onChange={(event) => this.setState({
+                <textarea id={item.id} onChange={(event) => this.setState({
                   textareaComment: event.target.value
                 })} value={textareaComment} ></textarea> <button onClick={() => this.replyReply(item.id)}>回复</button>
               </div> : ''

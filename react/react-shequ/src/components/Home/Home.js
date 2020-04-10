@@ -27,6 +27,9 @@ class Home extends Component {
   // 刚进页面的时候   第几页需要在地址栏获取地址栏没有就默认是第一页 
   // 切换类别 默认第一页数据
   // 分页器  
+  // 同一时间段可以发出了多个请求
+  // 但是当前最新的请求可能比较快，之前的请求比较慢，会导致页面先出现最新的内容而后就会被原来的内容覆盖(显示错误)
+  // 取消 axios 请求
   componentDidUpdate (prevProps) {
     const { search } = this.props.location
     const oldsearch = prevProps.location.search
@@ -45,7 +48,27 @@ class Home extends Component {
     }
   }
   getTopics = (type = 'all', page = '1', limit = 20) => {
-    axios.get(`https://www.vue-js.com/api/v1/topics?tab=${type}&limit=${limit}&page=${page}`).then(res => {
+    // 将 source 当成一个全局变量
+    // 上来就执行一次取消 axios 请求操作
+    if (this.source) {
+      console.log('取消 axios 请求')
+      this.source.cancel('Operation canceled by the user.');
+    }
+    const CancelToken = axios.CancelToken;
+    this.source = CancelToken.source();
+    // axios.get('/user/12345', {
+    //   cancelToken: source.token
+    // }).catch(function(thrown) {
+    //   if (axios.isCancel(thrown)) {
+    //     console.log('Request canceled', thrown.message);
+    //   } else {
+    //     // 处理错误
+    //   }
+    // });
+    // 取消请求（message 参数是可选的）
+    axios.get(`https://www.vue-js.com/api/v1/topics?tab=${type}&limit=${limit}&page=${page}`, {
+      cancelToken: this.source.token
+    }).then(res => {
       // console.log(res.data.data)
       this.setState({
         topics: res.data.data

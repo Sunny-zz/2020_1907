@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 class Message extends Component {
   state = {
     messageInfo: null
@@ -10,7 +11,7 @@ class Message extends Component {
     // accesstoken String
     const token = localStorage.getItem('token')
     axios.get(`https://www.vue-js.com/api/v1/messages?accesstoken=${token}`).then(res => {
-      // console.log(res.data.data)
+      console.log(res.data.data)
       this.setState({
         messageInfo: res.data.data
       })
@@ -24,9 +25,17 @@ class Message extends Component {
     })
   }
   render () {
-    return <div>
-      消息页面
+    const { messageInfo } = this.state
+    return messageInfo ? <div className='message-box'>
+      <div></div>
+      <div>
+        <h4>过往消息</h4>
+        {/* zhaoweibing 在话题 推荐一个优秀的语音答题社区 中@了你 */}
+        <ul>
+          {messageInfo.has_read_messages.map(item => <li key={item.id}> <Link to={`/user/${item.author.loginname}`}>{item.author.loginname}</Link>在话题 <Link to={`/topic/${item.topic.id}#${item.reply.id}`}>{item.topic.title}</Link> 中 {item.type === 'at' ? '@' : '回复'}了你  </li>)}
+        </ul>
       </div>
+    </div> : <div>稍等</div>
   }
 }
 export default Message

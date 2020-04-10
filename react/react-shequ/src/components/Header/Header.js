@@ -43,8 +43,8 @@ class Header extends Component {
     // 就要更新未读消息数
     // 什么时候更新
     // 当页面地址改变时更新未读消息数 但是当前处于查看消息页面不更新
-    if (this.props.location.pathname !== prevProps.location.pathname && this.props.location.pathname !== '/my/messages') {
-      // console.log(1111111)
+    const token = localStorage.getItem('token')
+    if (this.props.location.pathname !== prevProps.location.pathname && this.props.location.pathname !== '/my/messages' && token) {
       this.getMessageCount()
     }
   }

@@ -10,7 +10,7 @@ class CreateTopic extends Component {
   }
   render () {
     const { tab, title, content } = this.state
-    return <Box title='发布话题' linkText='主页' linkAddress='/'>
+    return <Box title='发布话题' linkText='主页' linkAddress='/' title1={<span>哈哈哈</span>}>
       <div className='create-topic'>
         <span>选择板块:</span>
         <select value={tab} onChange={event => this.handleForm(event, 'tab')}>
