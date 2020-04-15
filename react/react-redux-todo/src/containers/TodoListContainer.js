@@ -2,10 +2,11 @@
 
 import { connect } from 'react-redux';
 import TodoList from '../components/TodoList';
-import { toggleTodo, delTodo } from '../actions'
+import { toggleTodo, delTodo, changeEditorStatus, editorTodoText, getTodos } from '../actions'
+import { getFilterTodos } from '../public'
 const mapStateToProps = (state) => {
   return {
-    todos: state.todos
+    todos: getFilterTodos(state.todos, state.filterType)
   }
 }
 // mapDispatchToProps 方法  将一些带 dispatch 的函数当作 props 传递给组件
@@ -22,7 +23,7 @@ const mapStateToProps = (state) => {
 // mapDispatchToProps 方法有个简单的写法 正常是写成一个上面(12行---20行)类似的函数当作 props 传递
 // 另外一种简单的写法是写成一个对象对象里面写上 action 创建函数
 
-const TodoListContainer = connect(mapStateToProps, { toggleTodo, delTodo })(TodoList)
+const TodoListContainer = connect(mapStateToProps, { toggleTodo, delTodo, changeEditorStatus, editorTodoText, getTodos })(TodoList)
 // mapdispatch 的对象写法不是直接将 action 创建函数传递过去，而是包装(带上 dispatch 发 action)之后再传递的
 export default TodoListContainer
 

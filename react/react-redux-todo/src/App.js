@@ -3,7 +3,6 @@ import TodoHeader from './containers/TodoHeader';
 import TodoListContainer from './containers/TodoListContainer';
 import TodoFooterContainer from './containers/TodoFooterContainer';
 
-
 function App () {
   return (
     <div className="App">
@@ -36,3 +35,15 @@ function App () {
 // console.log(newArr)
 // console.log(arr)
 export default App;
+
+
+// 展示
+// 创建 reducer(多个)
+// 创建 store (合并多个reducer)
+// 提供给所有组件获取和修改的权限  Provider
+// 使用，容器组件通过 connect 的 mapStateToProps
+
+// 修改
+// 在对应的 reducer 中创建修改方法
+// 创建对应的 action 创建函数
+// 容器组件中导入 action 创建函数 ，并包装(mapDispatchToProps)

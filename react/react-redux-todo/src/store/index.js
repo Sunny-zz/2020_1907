@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 import todos from '../reducers/todos'
 import filterType from '../reducers/filterType'
 // store 数据的拆分
@@ -11,5 +12,5 @@ const rootReducer = combineReducers({
 })
 // 合并之后的state 
 // { todos:todos,  filterType:filterType }
-const store = createStore(rootReducer, applyMiddleware(logger))
+const store = createStore(rootReducer, applyMiddleware(logger, thunk))
 export default store
