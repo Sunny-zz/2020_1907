@@ -24,6 +24,7 @@ const mapStateToProps = (state) => {
 // 另外一种简单的写法是写成一个对象对象里面写上 action 创建函数
 
 const TodoListContainer = connect(mapStateToProps, { toggleTodo, delTodo, changeEditorStatus, editorTodoText, getTodos })(TodoList)
+
 // mapdispatch 的对象写法不是直接将 action 创建函数传递过去，而是包装(带上 dispatch 发 action)之后再传递的
 export default TodoListContainer
 

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Cart from '../components/Cart';
 import { getProductsInCart, getTotal } from '../reducers';
+import { checkout } from '../actions';
 const mapStateToProps = state => {
   // 根据 store 内的 cart 数据和 products 数据计算出 
   // productsInCart 数据
@@ -9,7 +10,7 @@ const mapStateToProps = state => {
     total: getTotal(state.products, state.cart)
   }
 }
-const CartContainer = connect(mapStateToProps)(Cart)
+const CartContainer = connect(mapStateToProps, { checkout })(Cart)
 export default CartContainer
 
 // 已知

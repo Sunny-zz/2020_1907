@@ -10,6 +10,7 @@ export const getTodos = () => {
     })
   }
 }
+
 export const toggleTodo = (id, isCompleted) => {
   return dispatch => {
     axios.patch(`http://localhost:3008/todos/${id}`, { isCompleted: isCompleted }).then(res => {

@@ -2,8 +2,22 @@ import React from 'react';
 import TodoHeader from './containers/TodoHeader';
 import TodoListContainer from './containers/TodoListContainer';
 import TodoFooterContainer from './containers/TodoFooterContainer';
+// import axios from 'axios';
 
 function App () {
+  // useEffect(() => {
+  //   // async  await 
+  //   // 可以将函数内的异步操作变成同步的 
+  //   // const getTodos = async () => {
+  //   //   const res = await axios.get('http://localhost:3008/todos')
+  //   //   console.log(res)
+  //   // }
+  //   async function getTodos () {
+  //     const res = await axios.get('http://localhost:3008/todos').catch(err => { alert('出错啦') })
+  //     console.log(res)
+  //   }
+  //   getTodos()
+  // })
   return (
     <div className="App">
       <h1>TODO</h1>

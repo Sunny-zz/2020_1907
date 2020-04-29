@@ -213,3 +213,13 @@ react 路由的创建
   ```css
     box-sizing: border-box;
   ```
+
+
+#### react homework
+进入网站是默认打开 登录页
+如果直接进入了网站的其他页，检测是否登录，没登录的话直接跳回登录页
+赵卫冰 https://zhaoweibing.github.io/react-sunmedia/#/
+田小飞 https://future613.github.io/sunmedia/#/
+王彪   programchat.cn
+潘玉婷 https://eatless-art.github.io/react-infor/#/
+于华锴 https://yuhuakai.github.io/react-sunmedia/

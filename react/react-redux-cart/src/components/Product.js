@@ -5,8 +5,8 @@ const Product = ({ title, inventory, price }) => {
     <p style={{ marginBottom: 0 }}><span>{title}</span>
       <span> - </span>
       <span>${price}</span>
-      <span> × </span>
-      <span>{inventory}</span></p>
+      {inventory ? <span> × {inventory}</span> : ''}
+    </p>
   </div>
 
 }
