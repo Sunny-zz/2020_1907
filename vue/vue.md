@@ -143,7 +143,98 @@ export default {
 修改
 直接对数据重新重新赋值即可
 
+### 父子组件之间的交互
+- prop 向子组件传递数据，也可以传递函数
+- 自定义事件 向子组件传递函数
+- 插槽 向子组件传递 html 内容
 
 ### 组件的 prop 
 当子组件再父组件中展示的时候，可能需要多个相同子组件，每一个子组件可能都有一些不同(组件内的内容或者样式).
 那么此时就需要父组件向子组件传递 prop ，子组件接收之后根据传过来的数据进行改变。
+父组件
+```html
+  <Button type="login"  text="登录"></Button>
+```
+子组件
+```js
+export default {
+  name: 'Button',
+  // 子组件接收 prop 可以写成两种
+  // 1.用数组接收
+  // props: ['type','text']
+  // 2.用对象接收 可以附带验证条件
+  props: {
+    // 验证写法有很多种
+    // 1. 只验证类型
+    // text: String
+    // 2. 多种验证 比如验证类型  设置默认值  添加自定义验证函数
+    text: {
+      type: String,
+      default: '默认按钮'
+    },
+    type: {
+      type: String,
+      validator (val) {
+        return ['login', 'signup', 'default'].includes(val)
+      },
+      default: 'default'
+    }
+  }
+}
+```
+
+### 组件的自定义事件
+就是父组件向子组件传递函数时的一种写法，也可以使用 prop 替代
+父组件
+```html
+  <!-- add 代表父组件内的函数  -->
+  <Button  @add="add"></Button>
+```
+子组件中
+template 中
+```html
+  <button @click="$emit('add',参数)">按钮</button>
+```
+script 中
+```js
+ methods: {
+    okClick () {
+      this.$emit('add',参数)  
+    }
+  }
+```
+
+### 组件的插槽
+当父组件想要传递不同的 html 结构给子组件展示时，需要使用插槽(slot)。一般布局组件需要设置插槽。
+
+父组件
+  ```html
+  <Dialog>
+    <!-- 插槽 slot -->
+    <!-- 在父组件中使用子组件时向子组件的开始标签和结束标签之间传递插槽内容(html结构) -->
+    <!-- 在子组件中可以直接使用  slot 标签接收父组件传递的 插槽 -->
+    <!-- 假如父组件传递插槽内容是想要在子组件中的不同位置展示，那么就要定义多个插槽，也就是需要给插槽命名(v-slot) -->
+    <!-- 带了名字的插槽叫具名插槽，在组组件内使用 slot 标签，加上name属性接收 例如 <slot name="header"></slot>  v-slot: 可以简写成 #  -->
+    <template #header>
+      <h3>提示信息</h3>
+    </template>
+    <!-- 没有命名的叫默认插槽，在子组件内依然使用 slot 标签接收 -->
+    <p>真的要删除吗？(不可恢复)</p>
+  </Dialog>
+  ```
+
+子组件
+  ```html
+    <div>
+      <div class="dialog">
+        <div class="dialog-header">
+          <!-- 接收具名插槽 hedaer -->
+          <slot name="header"></slot>
+        </div>
+        <hr />
+        <div class="dialog-content">
+          <!-- 接收默认插槽 -->
+          <slot></slot>
+      </div>
+    </div>
+  ```

@@ -1,6 +1,7 @@
 <template>
   <div class="main">
     <h2>对话框例子</h2>
+
     <button @click="show = true">删除</button>
     <Dialog
       :show="show"

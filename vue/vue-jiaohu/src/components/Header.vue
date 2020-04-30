@@ -37,6 +37,18 @@ export default {
     add () {
       this.num++
     }
+  },
+  created () {
+    console.log('组件的生命周期---初始化数据和事件完毕')
+    // 组件首次出现的时候发送请求获取数据更新 data 
+  },
+  mounted () {
+    console.log('组件的生命周期---初始挂载(在浏览器中出现组件的页面结构)完毕')
+    // 获取页面的真实 dom 节点
+    console.log(document.querySelector('header'))
+  },
+  updated () {
+    console.log('组件的生命周期---更新data或者prop等，并且页面渲染完毕');
   }
 }
 </script>
