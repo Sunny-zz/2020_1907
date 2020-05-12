@@ -15,6 +15,7 @@ Vue.use(VueRouter)
 // 路由默认的匹配关系是严格匹配，只能匹配一个
 const routes = [
   {
+
     path: '/',
     component: Home,
     // 子页面需要在父级页面对象内设置 使用 children 属性
