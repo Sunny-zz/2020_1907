@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../assets/element-variables.scss'
+// import '../assets/element-variables.scss'
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
 import { Button, Link, Input, Progress, Drawer, MessageBox, Tree, DatePicker } from 'element-ui'
