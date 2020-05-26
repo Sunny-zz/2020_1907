@@ -9,22 +9,30 @@
 
 <script>
 import { DELETE_TODO, COMPLETED_TODO } from '../store/mutationTypes';
+import { mapMutations } from 'vuex'
+// this.$store.xxx   ===  辅助函数优化
 export default {
   name: 'Todo',
   props: ['todo'],
   methods: {
-    del (id) {
-      this.$store.commit({
-        type: DELETE_TODO,
-        id
-      })
-    },
-    completedTodo (id) {
-      this.$store.commit({
-        type: COMPLETED_TODO,
-        id
-      })
-    }
+    // del (id) {
+    //   this.$store.commit({
+    //     type: DELETE_TODO,
+    //     id
+    //   })
+    // },
+    // completedTodo (id) {
+    //   this.$store.commit({
+    //     type: COMPLETED_TODO,
+    //     id
+    //   })
+    // }
+    // 类似于直接将 store 中的 mutation 函数获取到了，调用的时候传递参数相当于载荷
+    ...mapMutations({
+      del: DELETE_TODO,
+      completedTodo: COMPLETED_TODO
+    })
+    // ...mapMutations([DELETE_TODO, COMPLETED_TODO])
   },
 }
 </script>

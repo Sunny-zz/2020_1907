@@ -1,41 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { ADD_TODO, DELETE_TODO, COMPLETED_TODO } from './mutationTypes';
+import todos from './modules/todos'
+import showType from './modules/showType'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    todos: [
-      {
-        id: 1,
-        text: '打王者',
-        done: false
-      },
-      {
-        id: 2,
-        text: '打联盟',
-        done: false
-      }
-    ]
+  // modules 的对象其实就是相当于以前的 store 内的 state 数据
+  // state = modules   也就是说 数据有两个一个是 todos 值是 todos 模块 另外一个是 showType 值是 showType 模块
+  // 因为 todos 模块内写的 state 是 {todos: [xxxx]}  所有最终 store 中的 state 内的 todos = {todos: [xxxx]} 就不直接是数组了
+  // state: {
+  //   todos: [],
+  //   showType: 'all'
+  // },
+  modules: {
+    todoModule: todos,
+    typeModule: showType
   },
-  mutations: {
-    // 添加 todo 
-    [ADD_TODO] (state, payload) {
-      // 1. splice
-      // 2. push
-      state.todos.push({ id: new Date().getTime(), text: payload.todoText })
-    },
-    // 删除 todo
-    [DELETE_TODO] (state, payload) {
-      // 1. filter id
-      // 2. splice 索引
-      state.todos = state.todos.filter(todo => todo.id !== payload.id)
-    },
-    [COMPLETED_TODO] (state, payload) {
-      // 1. find |  forEach
-      // 2. map
-      const currentTodo = state.todos.find(todo => todo.id === payload.id)
-      currentTodo.done = !currentTodo.done
+  // store 中的数据 state = {todos:{todos: []},  showType:{showType: 'all'}}
+  getters: {
+    num: () => {
+      return 1000
     }
-  },
+  }
 })
+
+
