@@ -12,6 +12,7 @@ export default new Vuex.Store({
   //   todos: [],
   //   showType: 'all'
   // },
+  strict: process.env.NODE_ENV !== 'production',
   modules: {
     todoModule: todos,
     typeModule: showType

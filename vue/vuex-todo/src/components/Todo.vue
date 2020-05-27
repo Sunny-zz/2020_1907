@@ -3,13 +3,13 @@
     <span @click="completedTodo(todo.id)" :class="{ done: todo.done }">{{
       todo.text
     }}</span>
-    <button @click="del(todo.id)">删除</button>
+    <button @click="delTodo(todo.id)">删除</button>
   </div>
 </template>
 
 <script>
 import { DELETE_TODO, COMPLETED_TODO } from '../store/mutationTypes';
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 // this.$store.xxx   ===  辅助函数优化
 export default {
   name: 'Todo',
@@ -29,11 +29,19 @@ export default {
     // }
     // 类似于直接将 store 中的 mutation 函数获取到了，调用的时候传递参数相当于载荷
     ...mapMutations({
-      del: DELETE_TODO,
       completedTodo: COMPLETED_TODO
+    }),
+    ...mapActions({
+      delTodo: DELETE_TODO
     })
     // ...mapMutations([DELETE_TODO, COMPLETED_TODO])
   },
+  // destroyed () {
+  //   console.log('组件销毁了', this)
+  // },
+  // beforeDestroy () {
+  //   console.log('组件销毁之前', this)
+  // },
 }
 </script>
 
@@ -46,6 +54,9 @@ export default {
 }
 .todo span {
   flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   padding: 10px;
   user-select: none;
   cursor: pointer;
