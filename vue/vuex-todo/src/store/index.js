@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import todos from './modules/todos'
 import showType from './modules/showType'
+import createLogger from 'vuex/dist/logger'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -13,6 +14,7 @@ export default new Vuex.Store({
   //   showType: 'all'
   // },
   strict: process.env.NODE_ENV !== 'production',
+  plugins: [createLogger({ collapsed: false, })],
   modules: {
     todoModule: todos,
     typeModule: showType
