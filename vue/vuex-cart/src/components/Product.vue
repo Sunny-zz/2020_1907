@@ -3,8 +3,8 @@
     <h3>{{ product.name }}</h3>
     <!-- ￥3999.00 -->
     <span class="price">￥{{ product.price | numberToString }}</span>
-    <span class="inventory">库存剩余{{ product.inventory }}</span>
-    <button @click="addToCart(product.id)" :disabled="product.inventory <= 0">
+    <span class="inventory">库存剩余{{ product.showInventory }}</span>
+    <button @click="add(product.id)" :disabled="product.showInventory <= 0">
       添加到购物车
     </button>
   </div>
@@ -16,7 +16,11 @@ export default {
   name: 'Product',
   props: ['product'],
   methods: {
-    ...mapActions(['addToCart'])
+    ...mapActions(['addToCart', 'addProductToCart']),
+    add (id) {
+      this.addToCart(id)
+      // this.addProductToCart(id)
+    }
   }
 }
 </script>

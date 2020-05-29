@@ -1,7 +1,11 @@
 <template>
   <div class="cart-head">
     <label for="">
-      <input type="checkbox" name="" id="" />
+      <input
+        type="checkbox"
+        :checked="allProductInCartIsSelected"
+        @change="allSelect($event.target.checked)"
+      />
       <span>全选</span>
     </label>
     <div class="h-name">商品</div>
@@ -13,9 +17,17 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'CartHead'
+  name: 'CartHead',
+  computed: {
+    ...mapGetters(['allProductInCartIsSelected'])
+  },
+  methods: {
+    ...mapActions(['allSelect'])
+  }
 }
+
 </script>
 
 <style lang='scss'>
@@ -25,6 +37,6 @@ export default {
   height: 50px;
   background-color: #f3f3f3;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 </style>

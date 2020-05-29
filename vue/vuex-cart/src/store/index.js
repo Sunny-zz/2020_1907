@@ -9,5 +9,16 @@ export default new Vuex.Store({
   modules: {
     productModule,
     cartModule
+  },
+  actions: {
+    addToCart ({ commit }, id) {
+      commit('addToCart', id)
+    },
+    delProductInCart ({ commit }, id) {
+      commit('delProductInCart', id)
+    },
+    changeCartProductQuatity ({ commit }, payload) {
+      commit('changeCartProductQuatity', payload)
+    }
   }
 })

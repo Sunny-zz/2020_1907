@@ -2,22 +2,33 @@
   <div class="cart-footer">
     <div class="left">
       <label for="">
-        <input type="checkbox" name="" id="" />
+        <input
+          type="checkbox"
+          :checked="allProductInCartIsSelected"
+          @change="allSelect($event.target.checked)"
+        />
         <span>全选</span>
       </label>
       <span>删除选中商品</span>
     </div>
     <div class="right">
-      <span>已选0件商品</span>
-      <span>总价: ￥999</span>
+      <span>已选{{ totalData.selectedProductNumInCart }}件商品</span>
+      <span>总价: ￥{{ totalData.total | numberToString }}</span>
       <button class="pay">结算</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'CartFooter'
+  name: 'CartFooter',
+  computed: {
+    ...mapGetters(['allProductInCartIsSelected', 'totalData'])
+  },
+  methods: {
+    ...mapActions(['allSelect'])
+  }
 }
 </script>
 
