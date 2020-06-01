@@ -39,6 +39,34 @@ const productModule = {
       } else {
         currentProduct.showInventory = currentProduct.inventory - value
       }
+    },
+    deleteSelectedProductInCart (state, payload) {
+      // [
+      //   {
+      //     id: 1,
+      //     price: 3999,
+      //     name: '酷蛙 降噪版type-c接口手机游戏耳机入耳式 小米10/9Pro5G小米8se华为P20',
+      //     inventory: 10,
+      //     showInventory: 10
+      //   },
+      //   {
+      //     id: 2,
+      //     price: 66,
+      //     name: '筷子家用家庭防滑快子分用耐高温不发霉一人一色钛防霉10合金 炫彩 花开富贵 金色底红花 10双',
+      //     inventory: 2000,
+      //     showInventory: 2000
+      //   }
+      // ]
+      // [1,2]
+      state.products.forEach(item => {
+        if (payload.selectedIds.includes(item.id)) {
+          if (payload.type === 'delete') {
+            item.showInventory = item.inventory
+          } else {
+            item.inventory = item.showInventory
+          }
+        }
+      })
     }
   }
 }

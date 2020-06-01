@@ -9,12 +9,30 @@
         />
         <span>全选</span>
       </label>
-      <span>删除选中商品</span>
+      <span
+        @click="
+          deleteSelectedProductInCart({
+            selectedIds: $store.state.cartModule.selectedProductIdInCart,
+            type: 'delete'
+          })
+        "
+        >删除选中商品</span
+      >
     </div>
     <div class="right">
       <span>已选{{ totalData.selectedProductNumInCart }}件商品</span>
       <span>总价: ￥{{ totalData.total | numberToString }}</span>
-      <button class="pay">结算</button>
+      <button
+        @click="
+          deleteSelectedProductInCart({
+            selectedIds: $store.state.cartModule.selectedProductIdInCart,
+            type: 'pay'
+          })
+        "
+        class="pay"
+      >
+        结算
+      </button>
     </div>
   </div>
 </template>
@@ -23,11 +41,14 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'CartFooter',
+  created () {
+    console.log(this.totalData.total.toFixed(2))
+  },
   computed: {
     ...mapGetters(['allProductInCartIsSelected', 'totalData'])
   },
   methods: {
-    ...mapActions(['allSelect'])
+    ...mapActions(['allSelect', 'deleteSelectedProductInCart'])
   }
 }
 </script>

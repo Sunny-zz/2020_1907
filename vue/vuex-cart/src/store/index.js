@@ -19,6 +19,10 @@ export default new Vuex.Store({
     },
     changeCartProductQuatity ({ commit }, payload) {
       commit('changeCartProductQuatity', payload)
+    },
+    deleteSelectedProductInCart ({ commit }, payload) {
+      // 发请求要根据 payload.type 去发
+      commit('deleteSelectedProductInCart', payload)
     }
   }
 })

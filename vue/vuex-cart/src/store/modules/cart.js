@@ -88,6 +88,20 @@ const cartModule = {
       } else {
         state.selectedProductIdInCart.splice(ind, 1)
       }
+    },
+    deleteSelectedProductInCart (state, payload) {
+      // productIdInCart: [1],
+      // quantityById: { 1: 1, 2: 2, 3: 3 },
+      // selectedProductIdInCart: [2, 3]
+      state.productIdInCart = state.productIdInCart.filter(item => !payload.selectedIds.includes(item))
+      payload.selectedIds.forEach(item => {
+        // 如何判断一个变量的值是否时某个对象的属性名
+        // 访问对象下不存在的属性的属性值 是 undefined
+        if (!(state.quantityById[item] === undefined)) {
+          delete state.quantityById[item]
+        }
+      })
+      state.selectedProductIdInCart = []
     }
   },
   actions: {
