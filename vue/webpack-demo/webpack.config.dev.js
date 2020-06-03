@@ -11,7 +11,7 @@ const webpack = require('webpack');
 const path = require('path');
 // vue-template-complier 插件
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 module.exports = {
   // 入口文件路径 
   entry: './src/main.js',
@@ -40,7 +40,9 @@ module.exports = {
     // 加上热模块替换功能
     hot: true,
     clientLogLevel: "error",
-    compress: true
+    compress: true,
+    // 当浏览器地址发生改变的时候指向的所有页面都让他指向 idnex.html
+    historyApiFallback: true
   },
   // 处理其他模块(非 js 模块)，需要使用 loader，
   // 配置我们的 module 
@@ -58,8 +60,40 @@ module.exports = {
       //   ]
       // },
       {
+        test: /\.js$/,
+        // .js 文件会匹配  node_modules 内的文件，然后解析。
+        // 我们只需要我们从 node_modules 内导入的一些文件
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              [
+                "@babel/preset-env",
+                // {
+                //   "targets": {
+                //     "browsers": [">0.25%", "last 2 versions", "not ie 11", "not op_mini all"]
+                //   }
+                // }
+              ]
+            ],
+            cacheDirectory: true,
+          }
+        }
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
+        use: [
+          // 使用了 url-loader  file-loader 也必须下载
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              // 在 template 内的图片路径解析出问题加上该属性
+              esModule: false
+            }
+          }
+        ]
       },
       {
         test: /\.vue$/,
@@ -80,9 +114,12 @@ module.exports = {
     // 需要配置插件内容 使用 html-webpack-plugin 创建
     new HtmlWebpackPlugin({
       // 安装了  html-webpack-template 插件之后可以设置 template 属性，给 默认创建html 文件提供模板
-      template: './public/index.html'
+      inject: true,
+      template: './public/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    // 加快打包速度在打包模块的时候加入缓存
+    new HardSourceWebpackPlugin()
   ]
 }
