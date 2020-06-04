@@ -6,30 +6,16 @@
 // mode   模式   ---> 生产和开发两种
 
 // 开发模式 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const webpack = require('webpack');
-const path = require('path');
-// vue-template-complier 插件
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-module.exports = {
-  // 入口文件路径 
-  entry: './src/main.js',
-  // 出口设置
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+const { smart } = require('webpack-merge');
+const base = require('./webpack.config.base')
+module.exports = smart(base, {
   // 开发模式
   mode: 'development',
   // 需要设置开发工具(打包的时候准确定位错误警告等信息)
   // 开发环境品质最高的
   devtool: 'eval-source-map',
-  // 模块解析的配置  
-  resolve: {
-    // extensions 解析的时候可忽略的扩展名
-    extensions: [".js", ".json", '.vue']
-  },
   // 需要使用服务器帮助我们自动编译，不需要每次执行 npm run serve 手动编译 使用  webpack-dev-server
   devServer: {
     // 在 dist 文件夹下启动服务
@@ -60,28 +46,6 @@ module.exports = {
       //   ]
       // },
       {
-        test: /\.js$/,
-        // .js 文件会匹配  node_modules 内的文件，然后解析。
-        // 我们只需要我们从 node_modules 内导入的一些文件
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                "@babel/preset-env",
-                // {
-                //   "targets": {
-                //     "browsers": [">0.25%", "last 2 versions", "not ie 11", "not op_mini all"]
-                //   }
-                // }
-              ]
-            ],
-            cacheDirectory: true,
-          }
-        }
-      },
-      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           // 使用了 url-loader  file-loader 也必须下载
@@ -96,10 +60,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.vue$/,
-        use: ['vue-loader']
-      },
-      {
         test: /\.(scss|css)$/,
         use: [
           "style-loader", // 将 JS 字符串生成为 style 节点
@@ -110,16 +70,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // 自动创建 html 文件，并且会自动导入打包好之后的 js 文件 
-    // 需要配置插件内容 使用 html-webpack-plugin 创建
-    new HtmlWebpackPlugin({
-      // 安装了  html-webpack-template 插件之后可以设置 template 属性，给 默认创建html 文件提供模板
-      inject: true,
-      template: './public/index.html',
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new VueLoaderPlugin(),
-    // 加快打包速度在打包模块的时候加入缓存
-    new HardSourceWebpackPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ]
-}
+})
