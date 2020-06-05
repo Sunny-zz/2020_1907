@@ -82,6 +82,8 @@ num = 'hello';
 ### 函数
 
 函数类型(函数参数和返回值)
+可选参数 参数默认值 剩余参数
+在参数名旁使用 ?实现可选参数的功能
 ```ts
 // 原来普通函数
 function add(x, y) {
@@ -97,4 +99,53 @@ function add(x:number, y:number):number {
 let myAdd: (baseValue: number, increment: number) => number =
     function(x: number, y: number): number { return x + y; };
 // 支持类型推论
+```
+
+### 接口
+
+针对对象去使用接口进行类型检测
+在属性名旁使用 ?实现可选属性的功能
+只读属性在属性名前使用 readyonly 
+```ts
+interface LabelledValue {
+  label: string;
+  a?: number
+}
+function printLabel (obj: LabelledValue) {
+  console.log(obj.label);
+}
+
+let myObj = { size: 10, label: "Size 10 Object" };
+printLabel(myObj);
+```
+
+### 类 
+
+和原来的es 6 的 class 没有什么区别，只是加上了一些类型检验
+```ts
+class Greeter {
+  greeting: string;
+  // 类里面的 constructor 不需要设置返回值类型 自会去做类型推论 
+  constructor(message: string) {
+    this.greeting = message;
+  }
+  greet () {
+    return "Hello, " + this.greeting;
+  }
+}
+
+let greeter = new Greeter("world");
+
+// super 继承的关键字 
+// public  private 修饰符
+```
+
+### 泛型
+
+```ts
+function identity<T> (arg: T): T {
+  return arg;
+}
+let num = identity(1)
+num = '100' // 会报错，因为 arg 原来是泛型，当传递了数字参数  arg 就变成了数字类型，num 也就被推伦成数字类型
 ```

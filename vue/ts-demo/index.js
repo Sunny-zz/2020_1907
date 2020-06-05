@@ -36,9 +36,33 @@
 // let { a: newName1, b: newName2 } = o;
 // console.log(newName1, newName2)
 // 函数
-// 如果不声明参数和返回值的类型，默认都会因为类型推论设置成 any 类型
+// 如果不声明参数和返回值的类型，默认都会因为类型推论设1置成 any 类型
 // function add (x: number, y: number): number {
 //   return x + y;
 // }
-var add = function (x, y) { return x + y; };
-console.log(add(1, 2));
+// let add1 = (x: number, y: number): number => x + y
+// console.log(add(1, 2))
+// = 左边规定的是变量的类型 因为变量是一个函数 
+// = 右边是函数本体因为存在类型推论可以省略 参数和返回值的类型设置
+// let myAdd: (baseValue: number, increment: number) => string = function (x, y) { return (x + y).toString() };
+// 接口
+// interface LabelledValue {
+//   label: string;
+//   a?: number
+// }
+// function printLabel (obj: LabelledValue) {
+//   console.log(obj.label);
+// }
+// let myObj = { size: 10, label: "Size 10 Object" };
+// printLabel(myObj);
+// interface Point {
+//   readonly x: number;
+//   y?: number;
+// }
+// let point: Point = { x: 4 }
+// 数组只读创建
+var a = [1, 2, 3, 4];
+var ro = [5, 6, 7, 8];
+// a = ro as number[]
+a = ro;
+console.log(a);
