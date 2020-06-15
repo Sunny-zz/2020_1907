@@ -21,8 +21,10 @@ const routes: Array<RouteConfig> = [
   }
 ]
 
+// 我们把项目部署到二级目录(www.xxx.cn/xxxxxx)的话如果使用的是路由的 history 模式，会出问题,需要设置 publicPath 可以项目内有些有关路径的设置也需要修改
+// 不在首页刷新会直接 404  需要服务器配置相关设置
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })

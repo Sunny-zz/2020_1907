@@ -10,9 +10,10 @@ import axios from 'axios'
 
 @Component
 export default class Topic extends Vue {
+  $route: any
   topic = null
   created () {
-    axios.get(`https://www.vue-js.com/api/v1/topic/${this.$route.params.id}`).then(res => {
+    axios.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`).then(res => {
       this.topic = res.data.data
     })
   }

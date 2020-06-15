@@ -8,10 +8,10 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Prop } from 'vue-property-decorator'
-
+import { Topic } from '../store/modules/topics'
 @Component
 export default class TopicItem extends Vue {
-  @Prop() topic
+  @Prop() topic!: Topic
 }
 </script>
 <style lang="scss">

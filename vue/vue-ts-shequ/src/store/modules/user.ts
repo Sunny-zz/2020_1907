@@ -20,6 +20,7 @@ interface User {
 interface State {
   user: User | null;
 }
+
 const user = {
   state: (): State => ({
     user: null
@@ -30,12 +31,14 @@ const user = {
     }
   },
   actions: {
-    getUser ({ commit }: ActionContext<State, never>, loginname: string) {
+    // ActionContext<state类型,rootstate类型>
+    getUser ({ commit }: ActionContext<State, any>, loginname: string) {
       axios.get(`https://www.vue-js.com/api/v1/user/${loginname}`).then(res => {
         commit('getUser', res.data.data)
       })
     }
   }
+
 }
 
 export default user

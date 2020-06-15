@@ -4,7 +4,7 @@ interface Author {
   loginname: string;
   avatar_url: string;
 }
-interface Topic {
+export interface Topic {
   id: string;
   author: Author;
   author_id: string;
@@ -13,7 +13,7 @@ interface Topic {
   title: string;
   visit_count: number;
 }
-interface State {
+export interface State {
   topics: Topic[];
 }
 const posts = {
@@ -26,8 +26,8 @@ const posts = {
     }
   },
   actions: {
-    getTopics ({ commit }: ActionContext<State, never>) {
-      axios.get('https://www.vue-js.com/api/v1/topics').then(res => {
+    getTopics ({ commit }: ActionContext<State, any>) {
+      axios.get('https://cnodejs.org/api/v1/topics').then(res => {
         commit('getTopics', res.data.data)
       })
     }

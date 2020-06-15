@@ -3,6 +3,7 @@
     <div>
       <img :src="user.avatar_url" alt="" />
       <h4>{{ user.loginname }}</h4>
+      <span>{{ msg }}</span>
     </div>
     <hr />
     <div v-if="user.recent_replies.length">
@@ -26,19 +27,29 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch } from 'vue-property-decorator'
-import { Action, State } from 'vuex-class'
 import TopicItem from '../components/TopicItem.vue'
+import { getModule } from 'vuex-module-decorators'
+import myModule from '../store/modules/myModule'
+import userModule from '../store/modules/userModule'
 @Component({
   components: {
     TopicItem
   }
 })
 export default class User extends Vue {
-  @State(state => state.user.user) user
-  @Action getUser
+  $route: any
+  // @State(state => state.user.user) user: any
+  get user () {
+    return getModule(userModule).user
+  }
+
+  get msg () {
+    return getModule(myModule).message
+  }
+
   @Watch('$route', { immediate: true })
   getUserFun () {
-    this.getUser(this.$route.params.loginname)
+    getModule(userModule).fetchUser(this.$route.params.loginname)
   }
 }
 </script>
