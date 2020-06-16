@@ -1,0 +1,19 @@
+.wrap {
+  width: 375rpx;
+  height: 375rpx;
+  background-color: #000;
+
+  .box {
+    width: 187rpx;
+    height: 187rpx;
+    background-color: #ccc;
+  }
+
+  .active {
+    background-color: blue;
+  }
+}
+
+.active {
+  background-color: red;
+}

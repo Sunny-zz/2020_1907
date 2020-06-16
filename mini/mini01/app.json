@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/demo02/demo02",
+    "pages/demo01/demo01",
+    "pages/about/about",
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/company/company"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00b3d4",
+    "navigationBarTitleText": "墨迹天气",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "home"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "About"
+      }
+    ],
+    "color": "#ccc",
+    "selectedColor": "#00b3d4",
+    "position": "top"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

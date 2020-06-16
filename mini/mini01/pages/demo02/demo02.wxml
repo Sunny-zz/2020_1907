@@ -1,0 +1,4 @@
+<text selectable="{{true}}" space="nbsp">hello      wechat</text>
+<view hover-class="active" class="wrap">
+  <view hover-class="active" hover-stop-propagation="{{true}}" class="box"></view>
+</view>

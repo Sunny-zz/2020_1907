@@ -1,0 +1,28 @@
+<!-- 数据绑定 -->
+<text>{{count}}</text>
+<view>{{ 'hello ' + msg}}</view>
+<view>
+  <checkbox checked="{{checked}}" />
+</view>
+<!-- 列表渲染 wx:for -->
+<!-- 用法 wx:for="{{数组}}"  默认 index 是索引值  item 是数组内的一项 -->
+<!-- 如果有嵌套循环的话 item 和 index 就会冲突 -->
+<!-- 可以使用  wx:for-index  wx:for-item 进行重命名 -->
+<!-- 一般来说循环可以搭配 block 标签使用  block 标签就是一个空的标签(不做实际渲染 只用于一些逻辑操作) -->
+<block wx:if="{{todos.length}}">
+  <view wx:for="{{todos}}" wx:for-index="ind" wx:for-item="todo" wx:key="{{id}}">
+    {{todo.text}} : {{ind}}
+  </view>
+</block>
+<view hidden="{{show}}" class="box"></view>
+<!-- <view wx:if="{{!todos.length}}">暂无待办事项</view> -->
+<!-- 事件绑定 -->
+<!-- 事件绑定的时候不需要使用 {{}} 语法 -->
+<!-- 事件定的话直接在页面的 Page 对象添加方法即可 -->
+<button bind:tap="add">测试事件绑定</button>
+<!-- 传递参数的错误写法 -->
+<!-- <button bind:tap="add1(1000)">测试事件传递参数</button> -->
+<!-- 需要使用特殊属性传递参数 例如 data-num 使用 data- 开头的属性传递 -->
+<button bind:tap="add1" data-num="{{100}}" data-num2="{{2000}}">测试事件传递参数</button>
+<!-- 修改数据 -->
+<button bind:tap="add">修改 count</button>

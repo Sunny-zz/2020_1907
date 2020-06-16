@@ -1,0 +1,12 @@
+<!-- pages/about/about.wxml -->
+<view>
+  <view>
+    <text>按钮</text>
+  </view>
+  <text class="{{ show ? 'active' : ''}}">{{count*100}}</text>
+  <checkbox disabled="{{false}}" />
+</view>
+<!-- 模板语法 -->
+<!-- 1. 数据绑定 {{}} 语法  想要在 wxml 内使用js的话必须使用 {{}} 包裹 -->
+<!-- 2. 条件渲染 -->
+<!-- 3. 列表渲染 -->
