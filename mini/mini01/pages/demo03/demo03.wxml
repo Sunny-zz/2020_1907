@@ -1,0 +1,20 @@
+<!-- url 页面相对地址只能写 非 tabBar 地址 -->
+<!-- 想要跳转到 tbaBar 页面需要设置 open-type -->
+<navigator url="../demo01/demo01">demo01页</navigator>
+<navigator open-type="switchTab" url="../index/index">首页</navigator>
+<!-- 不推荐 nodes 属性使用 string -->
+<!-- 推荐使用数组类型 -->
+<rich-text nodes="{{nodes}}"></rich-text>
+<view class="btns">
+  <button class="btn" size="default" type="primary" loading="{{loading}}">按钮文本</button>
+  <!-- 需要小程序后台配置 -->
+  <button open-type="contact">客服</button>
+  <!-- 只能分享到联系人或群聊 -->
+  <button open-type="share">分享</button>
+  <!-- 必须是企业小程序 -->
+  <button open-type="getPhoneNumber">获取用户电话</button>
+  <!-- 获取微信个人信息 bindgetuserinfo回调中获取到用户信息 需要绑定事件获取 -->
+  <button open-type="getUserInfo">获取微信信息</button>
+  <button open-type="openSetting">获取授权信息</button>
+  <button open-type="feedback">意见反馈</button>
+</view>

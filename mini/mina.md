@@ -35,14 +35,10 @@ page.json
 
 - 列表渲染
   使用 `wx:for` 实现
+  需要注意的问题就是 key 的值可以直接写 item 内的属性名字符串
 
   ```html
-  <view
-    wx:for="{{todos}}"
-    wx:for-index="ind"
-    wx:for-item="todo"
-    wx:key="{{todo.id}}"
-  >
+  <view wx:for="{{todos}}" wx:for-index="ind" wx:for-item="todo" wx:key="id">
     {{todo.text}} : {{ind}}
   </view>
   ```
@@ -90,3 +86,48 @@ text 组件自能嵌套 text 组件
 ##### view 组件
 
 div 的代替品 块元素
+
+##### scroll-view 组件
+
+当你的 view 组件想要带滚动条，必须使用 scroll-view 组件,该组件支持很多滚动的事件
+不推荐使用 view 组件加 overflow 样式实现滚动条
+
+##### image 组件
+
+自带默认大小 320\* 240
+自带 mode 属性，用来控制图片的展示效果，mode 有 14 中模式 常用的是 aspectFit
+懒加载功能
+
+##### swiper 组件
+
+需要搭配 swiper-item 使用
+swiper 默认宽高 100% 150px
+swiper-item 默认宽高 100% 100%
+如果想要 swiper 自适应图片比例 需要根据图片的实际大小手动设置 swiper 的宽高
+
+##### navigator 组件
+
+页面跳转组件
+属性 open-type 比较重要
+
+##### rich-text 组件
+
+很想 vue v-html  
+设置 nodes 属性
+
+##### button 组件
+
+open-type 按钮的开放功能
+
+##### radio 组件
+
+一般需要配合 radio-group 组件使用
+表单组件获取值的内容 一般都通过事件对象内获取
+
+##### checkbox 组件
+
+一般需要配合 checkbox-group 组件使用
+
+##### picker 组件
+
+需要注意的就是 modo 属性，还有就是一定要手动填充 picker 的大小

@@ -1,0 +1,16 @@
+<!-- tabs组件的结构 -->
+<view class="tabs">
+  <view class="tabs-header">
+    <block wx:for="{{tabs}}" wx:key="id">
+      <view bind:tap="change" data-id="{{item.id}}" class="tabs-item {{item.selected ? 'active' : ''}}">
+        {{item.name}}
+      </view>
+    </block>
+  </view>
+  <block wx:for="{{tabs}}" wx:key="id">
+    <view wx:if="{{item.selected}}" class="tabs-content">{{item.content}}</view>
+  </block>
+  <!-- <view wx:if="{{tabs[0].selected}}" class="tabs-content">{{tabs[0].content}}</view>
+  <view wx:elif="{{tabs[1].selected}}" class="tabs-content">{{tabs[1].content}}</view>
+  <view wx:elif="{{tabs[2].selected}}" class="tabs-content">{{tabs[2].content}}</view> -->
+</view>

@@ -1,28 +1,26 @@
-// pages/demo02/demo02.js
+// pages/demo03/demo03.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://aecpm.alicdn.com/simba/img/TB1CWf9KpXXXXbuXpXXSutbFXXX.jpg_q50.jpg',
-      '//gw.alicdn.com/imgextra/i2/180/O1CN01Hr9AMJ1DCTtlpLAVU_!!180-0-lubanu.jpg',
-      '//gw.alicdn.com/imgextra/i1/26/O1CN01wXY1WJ1C3wu8La44C_!!26-0-lubanu.jpg',
-      'https://aecpm.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg',
+    nodes: [
+      {
+        name: 'div',
+        attrs: {
+          class: 'div_class',
+          style: 'line-height: 60px; color: red;',
+        },
+        children: [
+          {
+            type: 'text',
+            text: 'You never know what youre gonna get.',
+          },
+        ],
+      },
     ],
   },
-  handle() {
-    console.log('大盒子')
-  },
-  handleTap() {
-    console.log('小盒子')
-  },
-  scroll() {
-    console.log('滚动条滚动了')
-  },
-  scrollUp() {
-    console.log('滚动条到顶了')
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

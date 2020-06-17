@@ -1,27 +1,42 @@
-// pages/demo02/demo02.js
+// pages/demo05/demo05.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://aecpm.alicdn.com/simba/img/TB1CWf9KpXXXXbuXpXXSutbFXXX.jpg_q50.jpg',
-      '//gw.alicdn.com/imgextra/i2/180/O1CN01Hr9AMJ1DCTtlpLAVU_!!180-0-lubanu.jpg',
-      '//gw.alicdn.com/imgextra/i1/26/O1CN01wXY1WJ1C3wu8La44C_!!26-0-lubanu.jpg',
-      'https://aecpm.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg',
+    tabs: [
+      {
+        id: 1,
+        name: '小程序',
+        selected: true,
+        content: '小程序内容',
+      },
+      {
+        id: 2,
+        name: '前端',
+        selected: false,
+        content: '前端内容',
+      },
+      {
+        id: 3,
+        name: 'vue',
+        selected: false,
+        content: 'vue内容',
+      },
     ],
   },
-  handle() {
-    console.log('大盒子')
-  },
-  handleTap() {
-    console.log('小盒子')
-  },
-  scroll() {
-    console.log('滚动条滚动了')
-  },
-  scrollUp() {
-    console.log('滚动条到顶了')
+  change(e) {
+    this.setData({
+      tabs: this.data.tabs.map((item) => {
+        if (e.detail.id === item.id) {
+          item.selected = true
+        } else {
+          item.selected = false
+        }
+        return item
+      }),
+    })
+    // console.log('父页面内的事件触发了', e)
   },
   /**
    * 生命周期函数--监听页面加载

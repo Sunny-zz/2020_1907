@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/demo05/demo05",
+    "pages/demo04/demo04",
+    "pages/demo03/demo03",
     "pages/demo02/demo02",
     "pages/demo01/demo01",
     "pages/about/about",
@@ -10,7 +13,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00b3d4",
-    "navigationBarTitleText": "墨迹天气",
+    "navigationBarTitleText": "微信小程序",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

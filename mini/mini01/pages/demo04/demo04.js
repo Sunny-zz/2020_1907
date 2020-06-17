@@ -1,27 +1,32 @@
-// pages/demo02/demo02.js
+// pages/demo04/demo04.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://aecpm.alicdn.com/simba/img/TB1CWf9KpXXXXbuXpXXSutbFXXX.jpg_q50.jpg',
-      '//gw.alicdn.com/imgextra/i2/180/O1CN01Hr9AMJ1DCTtlpLAVU_!!180-0-lubanu.jpg',
-      '//gw.alicdn.com/imgextra/i1/26/O1CN01wXY1WJ1C3wu8La44C_!!26-0-lubanu.jpg',
-      'https://aecpm.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg',
-    ],
+    sex: '男',
+    fruits: [],
+    region: [],
   },
-  handle() {
-    console.log('大盒子')
-  },
-  handleTap() {
-    console.log('小盒子')
-  },
-  scroll() {
-    console.log('滚动条滚动了')
-  },
-  scrollUp() {
-    console.log('滚动条到顶了')
+  // select(e) {
+  //   // console.log('切换了单选', e)
+  //   this.setData({
+  //     sex: e.detail.value,
+  //   })
+  // },
+  // selectFruit(e) {
+  //   console.log(e)
+  //   this.setData({
+  //     fruits: e.detail.value,
+  //   })
+  // },
+  // selectAddress(e) {
+  //   console.log(e)
+  // },
+  select(e) {
+    this.setData({
+      [e.currentTarget.dataset.name]: e.detail.value,
+    })
   },
   /**
    * 生命周期函数--监听页面加载

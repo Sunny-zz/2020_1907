@@ -1,0 +1,37 @@
+<!-- 表单组件 -->
+<!-- 表单组件获取值的内容 一般都通过事件对象内获取  event -->
+<!-- radio -->
+<radio-group bindchange="select" data-name='sex'>
+  <label>
+    <radio value="男" checked="{{true}}" color="red" />
+    男
+  </label>
+  <label>
+    <radio value="女" color="red" />
+    女
+  </label>
+</radio-group>
+<view>单选选中的是:{{sex}}</view>
+<checkbox-group bindchange="select" data-name='fruits'>
+  <label>
+    <checkbox value="apple" />
+    🍎
+  </label>
+  <label>
+    <checkbox value="grape" />
+    🍇
+  </label>
+  <label>
+    <checkbox value="orange" />
+    🍊
+  </label>
+</checkbox-group>
+<view>喜欢的水果是:{{fruits}}</view>
+<view class="section">
+  <view class="section__title">省市区选择器</view>
+  <!-- region 就是默认的省市区的值 -->
+  <picker bindchange='select' data-name='region' mode="region" value="{{region}}" custom-item="全部">
+    <view wx:if="{{!region.length}}" class="picker">请选择地址</view>
+    <view wx:else>地址是: {{region[0]}},{{region[1]}},{{region[2]}}</view>
+  </picker>
+</view>

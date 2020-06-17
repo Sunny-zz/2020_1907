@@ -1,0 +1,23 @@
+.tabs-header {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+.tabs-header .tabs-item {
+  text-align: center;
+  line-height: 40px;
+  width: 100%;
+  color: #ccc;
+}
+
+.tabs-header .tabs-item.active {
+  color: #007fff;
+}
+
+.tabs-content {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+}

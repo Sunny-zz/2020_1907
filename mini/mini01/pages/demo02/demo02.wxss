@@ -17,3 +17,34 @@
 .active {
   background-color: red;
 }
+
+.box1 {
+  width: 100%;
+  height: 300px;
+}
+
+.box1 .box-item {
+  width: 100%;
+  height: 50px;
+  background-color: #ccc;
+  border-bottom: 1px solid red;
+}
+
+.pic {
+  display: block;
+  height: 100px;
+}
+
+.icon {
+  width: 100rpx;
+  height: 50rpx;
+}
+
+.swiper {
+  width: 100vw;
+  height: calc(100vw * 352 / 1125);
+}
+
+.swiper image {
+  width: 100%;
+}

@@ -1,0 +1,4 @@
+<!-- 自定义组件: 很多页面都有相同的结构 -->
+<view>使用自定义组件 Tabs</view>
+<!-- 传递数据  传递事件 -->
+<Tabs tabs="{{tabs}}" bindselect="change" />

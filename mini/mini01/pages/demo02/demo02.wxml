@@ -2,3 +2,28 @@
 <view hover-class="active" class="wrap">
   <view hover-class="active" hover-stop-propagation="{{true}}" class="box"></view>
 </view>
+<scroll-view bindscroll="scroll" bindscrolltoupper="scrollUp" scroll-y="{{true}}" class="box1">
+  <view class="box-item">1</view>
+  <view class="box-item">2</view>
+  <view class="box-item">3</view>
+  <view class="box-item">4</view>
+  <view class="box-item">5</view>
+  <view class="box-item">6</view>
+  <view class="box-item">7</view>
+  <view class="box-item">8</view>
+</scroll-view>
+<!-- 由于小程序大小不能超过 2m 一般图片都使用网络图片 -->
+<!-- aspectFit 相当于原来 html 内的图片默认处理方式直接给宽度高度自适应  常用 -->
+<!-- height -->
+<image lazy-load="{{true}}" class="pic" mode="aspectFill" src="https://aecpm.alicdn.com/simba/img/TB1CWf9KpXXXXbuXpXXSutbFXXX.jpg_q50.jpg" />
+<image class="icon" src="../../images/1.png" />
+<!-- 如果想要 swiper 自适应图片比例 需要根据图片的实际大小手动设置 swiper 的宽高 -->
+<!-- 原图的宽高 1125  352 -->
+<!-- swiper的宽高 100vw  ？ -->
+<swiper class="swiper" indicator-dots="{{true}}" circular="{{true}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image mode="widthFix" class="swiper-image" src="{{item}}" />
+    </swiper-item>
+  </block>
+</swiper>
