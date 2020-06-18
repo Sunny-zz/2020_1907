@@ -1,0 +1,7 @@
+/* pages/demo06/demo06.wxss */
+.num {
+  width: 100%;
+  line-height: 80px;
+  border-bottom: 1px solid #78d4a3;
+  text-align: center;
+}

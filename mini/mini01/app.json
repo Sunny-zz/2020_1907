@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/demo06/demo06",
     "pages/demo05/demo05",
     "pages/demo04/demo04",
     "pages/demo03/demo03",
@@ -29,7 +30,7 @@
     ],
     "color": "#ccc",
     "selectedColor": "#00b3d4",
-    "position": "top"
+    "position": "bottom"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

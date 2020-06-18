@@ -1,0 +1,7 @@
+<!-- 页面的生命周期 -->
+<navigator url="../index/index" open-type="switchTab">首页</navigator>
+<!-- <block wx:if="{{posts.length}}">
+  <view wx:for="{{posts}}" wx:key="id">{{item.title}}</view>
+</block>
+<view wx:else>请稍等......</view> -->
+<view class="num" wx:for="{{numbers}}" wx:key="item">{{item}}</view>
