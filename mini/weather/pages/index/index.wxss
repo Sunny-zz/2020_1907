@@ -1,0 +1,20 @@
+.weather-other {
+  display: flex;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.weather-other>view {
+  width: 50%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-other>view:first-child {
+  border-right: #ccc 1px solid;
+}

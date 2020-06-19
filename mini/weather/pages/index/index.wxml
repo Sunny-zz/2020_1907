@@ -1,0 +1,25 @@
+<!-- index.wxml -->
+<view bind:tap="goSearch" class="address">
+  <text>{{address.street}}</text>
+  <text>{{address.district}}</text>
+  <text>{{address.city}}</text>
+</view>
+<view wx:if="{{weatherData}}" class="weather">
+  <view class="weather-head">
+    <view>{{weatherData.currentTemperature}}°</view>
+    <view>{{weatherData.weatherDesc}}</view>
+    <view>{{weatherData.wind}}</view>
+  </view>
+  <view class="weather-other">
+    <view>
+      <text>今天</text>
+      <text>{{weatherData.weatherOther[0].temperature}}</text>
+      <text>{{weatherData.weatherOther[0].weather}}</text>
+    </view>
+    <view>
+      <text>明天</text>
+      <text>{{weatherData.weatherOther[1].temperature}}</text>
+      <text>{{weatherData.weatherOther[1].weather}}</text>
+    </view>
+  </view>
+</view>

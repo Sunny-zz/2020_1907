@@ -22,13 +22,13 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.1",
+	"libVersion": "2.11.2",
 	"appid": "wxccde5958cd4260e0",
-	"projectname": "mini01",
+	"projectname": "weather",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -61,23 +61,8 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/logs/logs",
-					"pathName": "pages/logs/logs",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/about/about",
-					"pathName": "pages/about/about",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
+					"name": "pages/search/search",
+					"pathName": "pages/search/search",
 					"scene": null
 				}
 			]

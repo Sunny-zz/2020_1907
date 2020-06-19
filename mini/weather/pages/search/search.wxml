@@ -1,0 +1,14 @@
+<view class="search-head">
+  <!-- <input confirm-type="search" class="search-input" bindconfirm='confirm' placeholder="搜索城市" /> -->
+  <!-- 搜索栏输入城市 -->
+  <!-- 需要额外接口配合 -->
+  <!-- 在当前页显示所有国内相关城市，然后随意点击任何一个城市切换回首页并展示对应的城市天气预报 -->
+  <!-- 写一个简单的 picker 替代 -->
+  <picker mode="region" bindchange="bindRegionChange">
+    <view class="picker">请选择</view>
+  </picker>
+</view>
+<view>
+  <text>当前位置</text>
+  <text>{{address.city}}{{address.district}}{{address.street}}</text>
+</view>
