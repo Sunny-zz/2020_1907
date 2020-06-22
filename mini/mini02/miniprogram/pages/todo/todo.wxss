@@ -1,0 +1,29 @@
+/* pages/todo/todo.wxss */
+.todo-form {
+  display: flex;
+}
+.todo-text {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 20px;
+}
+.todo-form button {
+  width: 80px;
+  flex-shrink: 0;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  border-bottom: 1px solid #000;
+}
+.todo-item text {
+  flex-grow: 1;
+}
+.todo-item text.done {
+  color: #ccc;
+  text-decoration: line-through;
+}
+.todo-item button {
+  width: 80px;
+}

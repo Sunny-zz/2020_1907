@@ -1,0 +1,16 @@
+<view>
+  <text class="title">todo</text>
+</view>
+<view class="todo-form">
+  <input class='todo-text' bindinput="handleInput" value="{{text}}" type="text" />
+  <button type="primary" bind:tap="add">add</button>
+</view>
+<view wx:if="{{todos.length}}" class="todo-list">
+  <view class="todo-item" wx:for="{{todos}}" wx:key="_id">
+    <text data-item="{{item}}" bind:tap="change" class="{{item.done? 'done' : ''}}">
+      {{item.text}}
+    </text>
+    <button bind:tap="del" data-id="{{item._id}}" type="warn">del</button>
+  </view>
+</view>
+<view wx:else>暂无待办事项</view>

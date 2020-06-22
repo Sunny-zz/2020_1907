@@ -29,13 +29,14 @@ Page({
     //   app.globalData.showAddress !== app.globalData.currentAddress
     //     ? '新的经纬度'
     //     : '否则该参数就不需要使用'
-    wx.request({
-      url:
-        'https://api.map.baidu.com/geocoding/v3/?address=上海市&output=json&ak=MZsh6R2dcARRzvRHCUnQronVI9XtD1V9',
-      success: (res) => {
-        console.log(res)
-      },
-    })
+    // 地址转化经纬度
+    // wx.request({
+    //   url:
+    //     'https://api.map.baidu.com/geocoding/v3/?address=上海市&output=json&ak=MZsh6R2dcARRzvRHCUnQronVI9XtD1V9',
+    //   success: (res) => {
+    //     console.log(res)
+    //   },
+    // })
     const fail = (data) => {
       console.log(data)
     }
@@ -63,6 +64,9 @@ Page({
     BMap.weather({
       fail: fail,
       success: success,
+      // 在此处判断是否是当前位置的地址 决定 location 是否有值
+      // 或者说直接将所有地址(默认地址和选择的地址都转化为经纬度) 直接添加到 location 内就不需要判断还是否是当前位置了
+      location: '',
     })
 
     // 获取全局数据 currentAddress
